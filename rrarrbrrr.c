@@ -6,23 +6,23 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:25 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/25 17:37:27 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/25 17:39:10 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rra()
+void	rra()
 {
 	return;
 }
 
-void rrb()
+void	rrb()
 {
 	return;
 }
 
-void rrr()
+void	rrr()
 {
 	return;
 }
