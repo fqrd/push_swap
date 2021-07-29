@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_fn.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/07/29 15:37:58 by fcaquard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*ft_lstnew(t_list *previous, void *content)
@@ -41,27 +53,26 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del(lst);
-	free(lst);
-}
-
 void	ft_lstclear(t_list **lst, void (*del) (void *))
 {
-	t_list	*tmp;
-
 	if (lst != NULL && *del != NULL)
 	{
 		while (*lst)
-		{
-			tmp = (*lst)->next;
-			del((*lst));
-			free (*lst);
-			*lst = tmp;
-		}
+			del(*lst);
 	}
 	lst = NULL;
+}
+
+void	ft_lstdelone(t_list *lst)
+{
+	if (!lst)
+		return ;
+	if (lst->next)
+		lst->next->previous = lst->previous;
+	if (lst->previous)
+		lst->previous->next = lst->next;
+	lst->next = NULL;
+	lst->previous = NULL;
+	lst->content = NULL;
+	free(lst);
 }
