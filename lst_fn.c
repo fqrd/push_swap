@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 17:21:02 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:34:35 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstfirst(t_list *lst)
 	{
 		while (lst)
 		{
-			if (!(lst->previous))
+			if (lst->previous == NULL)
 				return (lst);
 			lst = lst->previous;
 		}
@@ -63,15 +63,28 @@ void	ft_lstclear(t_list **lst, void (*del) (void *))
 	lst = NULL;
 }
 
-void	ft_lstdelone(t_list *lst)
+t_list	*ft_lstdelone(t_list *lst)
 {
+	t_list *left;
+
+	left = NULL;
 	if (!lst)
-		return ;
+		return (left);
 	if (lst->next)
+	{
+		left = lst->next;
+		printf("has next\n");
 		lst->next->previous = lst->previous;
+	}
 	if (lst->previous)
+	{
+		left = lst->previous;
+		printf("has previous\n");
 		lst->previous->next = lst->next;
+	}
 	lst->next = NULL;
 	lst->previous = NULL;
+	lst = NULL;
 	free(lst);
+	return (left);
 }

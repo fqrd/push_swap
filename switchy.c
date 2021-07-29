@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 17:46:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:34:38 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	switchy(t_list **x)
 	t_list	*next;
 
 	first = ft_lstfirst(*x);
-	next = first->next;
 	if (ft_lstsize(first) < 2)
 		return ;
+	next = first->next;
 	first->previous = next;
 	first->next = next->next;
+	if (next->next)
+		next->next->previous = first;
 	next->next = first;
 	next->previous = NULL;
 	return ;
@@ -31,7 +33,6 @@ void	switchy(t_list **x)
 void	sa(t_list **a)
 {
 	switchy(a);
-
 }
 
 void	sb(t_list **b)

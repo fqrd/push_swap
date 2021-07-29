@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 17:24:05 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/29 19:35:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static int	*test_duplicates(int *p)
 
 static int	*test_all_positive(int *p)
 {
-	p[0] = 45;
-	p[1] = 5;
-	p[2] = 4;
-	p[3] = 6;
-	p[4] = 2;
-	p[5] = 29;
-	p[6] = 96;
-	p[7] = 700;
+	p[0] = 1;
+	p[1] = 2;
+	p[2] = 3;
+	p[3] = 4;
+	p[4] = 5;
+	p[5] = 6;
+	p[6] = 7;
+	p[7] = 8;
 	p[8] = INT_MIN;
 	return (p);	
 }
@@ -99,15 +99,40 @@ int	main(void)
 	b = NULL;
 
 	sa(&a);
+	pa(&a, &b);
+	// sa(&a);
+	// printf("%d\n", ft_lstfirst(a)->content);
+	// printf("%d\n", ft_lstfirst(a)->next->content);
+
+	// printf("listfirst: %d \n", ft_lstfirst(a)->content);
+	ra(&a);
+	// printf("listfirst: %d \n", ft_lstfirst(a)->content);
 
 
-	a = ft_lstfirst(a);
-	while (a->next)
+	printf("***A STACK ***\n");
+	if (a)
 	{
+		a = ft_lstfirst(a);
+		while (a->next)
+		{
+			printf("%d\n", a->content);
+			a = a->next;
+		}
 		printf("%d\n", a->content);
-		a = a->next;
 	}
-	printf("%d\n", a->content);
+
+	printf("***B STACK ***\n");
+	if (b)
+	{
+		b = ft_lstfirst(b);
+		while (b->next)
+		{
+			printf("%d\n", b->content);
+			b = b->next;
+		}
+		printf("%d\n", b->content);
+	}
+
 
 	free(na);
 	// ft_lstclear(&a, &empty_list);
