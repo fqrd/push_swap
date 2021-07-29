@@ -6,18 +6,18 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 15:37:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/29 17:21:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(t_list *previous, void *content)
+t_list	*ft_lstnew(t_list *previous, int content)
 {
 	t_list	*list;
 
 	list = malloc(sizeof(t_list) * 1);
-	if (!list)
+	if (!list || !content)
 		return (NULL);
 	list->content = content;
 	list->next = NULL;
@@ -73,6 +73,5 @@ void	ft_lstdelone(t_list *lst)
 		lst->previous->next = lst->next;
 	lst->next = NULL;
 	lst->previous = NULL;
-	lst->content = NULL;
 	free(lst);
 }

@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   switchy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 17:29:26 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/07/29 17:46:58 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	empty_list(t_list *list)
+void	switchy(t_list **x)
 {
-	list->next = NULL;
-	list->previous = NULL;
-	list->content = INT_MIN;
+	t_list	*first;
+	t_list	*next;
+
+	first = ft_lstfirst(*x);
+	next = first->next;
+	if (ft_lstsize(first) < 2)
+		return ;
+	first->previous = next;
+	first->next = next->next;
+	next->next = first;
+	next->previous = NULL;
+	return ;
 }
 
-size_t	ft_lstsize(t_list *lst)
+void	sa(t_list **a)
 {
-	size_t	i;
+	switchy(a);
 
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
+}
+
+void	sb(t_list **b)
+{
+	switchy(b);
+}
+
+void	ss(t_list **a, t_list **b)
+{
+	switchy(a);
+	switchy(b);
+	return ;
 }
