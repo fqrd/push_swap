@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:26 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 15:24:18 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 18:54:54 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	returny(t_list **x)
 
 	if (!*x)
 		return ;
-	first = ft_lstfirst(*x);
+	first = ft_lstbottom(*x);
 	if (ft_lstsize(first) < 2)
 		return ;
-	last = ft_lstlast(*x);
+	last = ft_lsttop(*x);
 	if (first->next)
 		first->next->previous = NULL;
 	first->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 16:20:09 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 19:10:01 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,40 @@
 
 static int	*test(int *p)
 {
-	p[0] = 1;
-	p[1] = 2;
-	p[2] = 3;
-	p[3] = 4;
-	p[4] = 5;
-	p[5] = 6;
-	p[6] = 7;
-	p[7] = 8;
+	p[9] = INT_MAX;
 	p[8] = INT_MIN;
+	p[7] = 8;
+	p[6] = 7;
+	p[5] = 6;
+	p[4] = 5;
+	p[3] = 4;
+	p[2] = 3;
+	p[1] = 2;
+	p[0] = 1;
 	return (p);
 }
 
 void	push_swap(t_list **x, t_list **y)
 {
-	ra(x);
-	ra(x);
+	display_stacks(*x, *y);
+	sa(x);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	rr(x, y);
+	display_stacks(*x, *y);
+	rrr(x, y);
+	display_stacks(*x, *y);
+	ss(x, y);
+	display_stacks(*x, *y);
 }
 
 void	display_stacks(t_list *a, t_list *b)
@@ -37,25 +55,26 @@ void	display_stacks(t_list *a, t_list *b)
 	printf("***A STACK ***\n");
 	if (a)
 	{
-		a = ft_lstfirst(a);
-		while (a->next)
+		a = ft_lsttop(a);
+		while (a->previous)
 		{
 			printf("%d\n", a->content);
-			a = a->next;
+			a = a->previous;
 		}
 		printf("%d\n", a->content);
 	}
 	printf("***B STACK ***\n");
 	if (b)
 	{
-		b = ft_lstfirst(b);
-		while (b->next)
+		b = ft_lsttop(b);
+		while (b->previous)
 		{
 			printf("%d\n", b->content);
-			b = b->next;
+			b = b->previous;
 		}
 		printf("%d\n", b->content);
 	}
+	printf("\n----------------\n\n");
 }
 
 int	main(void)
@@ -71,10 +90,9 @@ int	main(void)
 	if (!na)
 		return (0);
 	na = test(na);
-	a = create_list(na);
+	a = create_list(na, 10);
 	b = NULL;
 	push_swap(&a, &b);
-	display_stacks(a, b);
 	free(na);
 	return (0);
 }
