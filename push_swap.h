@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 15:23:59 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 16:15:11 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ typedef struct s_list
 	struct s_list	*previous;
 }					t_list;
 
-t_list	*ft_lstnew(t_list *previous, int content);
+t_list	*ft_lstnew(t_list **previous, int content);
 t_list	*ft_lstfirst(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstdelone(t_list *lst);
 void	ft_lstclear(t_list **lst, void (*del) (void *));
-void	empty_list(t_list *list);
 size_t	ft_lstsize(t_list *lst);
+t_list	*create_list(int *p);
 
 void	switchy(t_list **x);
 void	pushy(t_list **x, t_list **y);

@@ -1,56 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_fn.c                                           :+:      :+:    :+:   */
+/*   push_swap_lists.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 15:23:49 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 16:17:45 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(t_list *previous, int content)
+t_list	*ft_lstnew(t_list **previous, int content)
 {
 	t_list	*list;
 
 	list = malloc(sizeof(t_list) * 1);
-	if (!list || !content)
+	if (!list)
 		return (NULL);
 	list->content = content;
 	list->next = NULL;
-	list->previous = previous;
+	list->previous = *previous;
+	if (*previous)
+		(*previous)->next = list;
 	return (list);
 }
 
-t_list	*ft_lstfirst(t_list *lst)
+t_list	*create_list(int *p)
 {
-	if (lst)
-	{
-		while (lst)
-		{
-			if (lst->previous == NULL)
-				return (lst);
-			lst = lst->previous;
-		}
-	}
-	return (lst);
-}
+	int		i;
+	t_list	*next;
+	t_list	*previous;
 
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (lst)
+	i = 0;
+	next = NULL;
+	previous = NULL;
+	while (p[i] != INT_MIN)
 	{
-		while (lst)
-		{
-			if (!(lst->next))
-				return (lst);
-			lst = lst->next;
-		}
+		next = ft_lstnew(&previous, p[i]);
+		if (previous)
+			previous->next = next;
+		previous = next;
+		i++;
 	}
-	return (lst);
+	previous->next = NULL;
+	return (previous);
 }
 
 void	ft_lstclear(t_list **lst, void (*del) (void *))
