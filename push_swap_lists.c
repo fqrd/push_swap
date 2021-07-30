@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 19:15:28 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 19:28:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,20 @@ t_list	*create_list(int *p, size_t len)
 	return (previous);
 }
 
-void	ft_lstclear(t_list **lst, void (*del) (void *))
+void	ft_lstclear(t_list **lst)
 {
-	if (lst != NULL && *del != NULL)
+	t_list *pre;
+
+	if (lst != NULL)
 	{
+		*lst = ft_lsttop(*lst);
 		while (*lst)
-			del(*lst);
+		{
+			pre = (*lst)->previous;
+			ft_lstdelone(*lst);
+			free(*lst);
+			*lst = pre;
+		}
 	}
 	lst = NULL;
 }
