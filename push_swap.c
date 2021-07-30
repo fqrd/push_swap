@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 19:35:29 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 11:27:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,10 @@ int	main(void)
 
 	sa(&a);
 	pa(&a, &b);
-	// sa(&a);
-	// printf("%d\n", ft_lstfirst(a)->content);
-	// printf("%d\n", ft_lstfirst(a)->next->content);
-
-	// printf("listfirst: %d \n", ft_lstfirst(a)->content);
 	ra(&a);
-	// printf("listfirst: %d \n", ft_lstfirst(a)->content);
-
+	rra(&a);
+	pb(&a, &b);
+	sa(&a);
 
 	printf("***A STACK ***\n");
 	if (a)

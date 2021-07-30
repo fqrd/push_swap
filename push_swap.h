@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 18:56:03 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 11:26:08 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t	ft_lstsize(t_list *lst);
 void	switchy(t_list **x);
 void	pushy(t_list **x, t_list **y);
 void	returny(t_list **x);
-void	rreturny(t_list *x);
+void	rreturny(t_list **x);
 
 void	sa(t_list **a);
 void	sb(t_list **b);
@@ -45,8 +45,9 @@ void	pb(t_list **a, t_list **b);
 void	ra(t_list **a);
 void	rb(t_list **b);
 void	rr(t_list **a, t_list **b);
-void	rra(t_list *a);
-void	rrb(t_list *b);
-void	rrr(t_list *a, t_list *b);
+void	rra(t_list **a);
+void	rrb(t_list **b);
+void	rrr(t_list **a, t_list **b);
+
 
 #endif

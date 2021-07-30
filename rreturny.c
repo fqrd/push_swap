@@ -6,21 +6,21 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/29 17:46:51 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 11:25:26 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rreturny(t_list *x)
+void	rreturny(t_list **x)
 {
 	t_list	*last;
 	t_list	*first;
 
-	first = ft_lstfirst(x);
+	first = ft_lstfirst(*x);
 	if (ft_lstsize(first) < 2)
 		return ;
-	last = ft_lstlast(x);
+	last = ft_lstlast(*x);
 	if (last->previous)
 		last->previous->next = NULL;
 	last->previous = NULL;
@@ -29,17 +29,17 @@ void	rreturny(t_list *x)
 	return ;
 }
 
-void	rra(t_list *a)
+void	rra(t_list **a)
 {
 	rreturny(a);
 }
 
-void	rrb(t_list *b)
+void	rrb(t_list **b)
 {
 	rreturny(b);
 }
 
-void	rrr(t_list *a, t_list *b)
+void	rrr(t_list **a, t_list **b)
 {
 	rreturny(a);
 	rreturny(b);
