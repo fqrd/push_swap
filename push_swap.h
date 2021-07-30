@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 11:26:08 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/30 15:23:59 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
-
 
 #endif
