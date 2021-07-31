@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/31 15:12:37 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 23:07:41 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_list	*create_list(int *p, size_t len)
 
 void	ft_lstclear(t_list **lst)
 {
-	t_list *pre;
+	t_list	*pre;
 
 	if (lst != NULL)
 	{
@@ -69,7 +69,6 @@ void	ft_lstdelone(t_list **lst)
 {
 	if (*lst)
 	{
-		printf("deleting content: %d\n", (*lst)->content);
 		if ((*lst)->next)
 			(*lst)->next->previous = (*lst)->previous;
 		if ((*lst)->previous)

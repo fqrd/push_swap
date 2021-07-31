@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 18:54:54 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 23:22:55 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 void	rreturny(t_list **x)
 {
-	t_list	*last;
-	t_list	*first;
+	t_list	*top;
+	t_list	*bottom;
 
-	first = ft_lstbottom(*x);
-	if (ft_lstsize(first) < 2)
+	bottom = ft_lstbottom(*x);
+	if (!bottom || !bottom->next)
 		return ;
-	last = ft_lsttop(*x);
-	if (last->previous)
-		last->previous->next = NULL;
-	last->previous = NULL;
-	last->next = first;
-	first->previous = last;
+	top = ft_lsttop(*x);
+	top->previous->next = NULL;
+	top->previous = NULL;
+	top->next = bottom;
+	bottom->previous = top;
 	return ;
 }
 

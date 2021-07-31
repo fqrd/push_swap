@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:26 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 18:54:54 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 23:17:36 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	returny(t_list **x)
 {
-	t_list	*last;
-	t_list	*first;
+	t_list	*top;
+	t_list	*bottom;
 
-	if (!*x)
+	bottom = ft_lstbottom(*x);
+	if (!bottom || !bottom->next)
 		return ;
-	first = ft_lstbottom(*x);
-	if (ft_lstsize(first) < 2)
-		return ;
-	last = ft_lsttop(*x);
-	if (first->next)
-		first->next->previous = NULL;
-	first->next = NULL;
-	first->previous = last;
-	last->next = first;
+	top = ft_lsttop(*x);
+	bottom->next->previous = NULL;
+	bottom->next = NULL;
+	bottom->previous = top;
+	top->next = bottom;
 	return ;
 }
 
