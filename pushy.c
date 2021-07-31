@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:06 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 19:03:43 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 15:22:26 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	pushy(t_list **x, t_list **y)
 	t_list	*top_y;
 
 	top_y = NULL;
-	if (ft_lstsize(ft_lstbottom(*x)))
+	if (*x)
 	{
 		top_x = ft_lsttop(*x);
-		if (ft_lstsize(ft_lstbottom(*y)) > 0)
+		if (*y)
 			top_y = ft_lsttop(*y);
 		*y = ft_lstnew(&top_y, top_x->content);
-		*x = ft_lstdelone(top_x);
+		*x = top_x->previous;
+		ft_lstdelone(&top_x);
 	}
 }
 

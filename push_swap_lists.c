@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 19:28:29 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 15:12:37 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,34 +58,25 @@ void	ft_lstclear(t_list **lst)
 		while (*lst)
 		{
 			pre = (*lst)->previous;
-			ft_lstdelone(*lst);
-			free(*lst);
+			ft_lstdelone(&*lst);
 			*lst = pre;
 		}
 	}
 	lst = NULL;
 }
 
-t_list	*ft_lstdelone(t_list *lst)
+void	ft_lstdelone(t_list **lst)
 {
-	t_list	*left;
-
-	left = NULL;
-	if (!lst)
-		return (left);
-	if (lst->next)
+	if (*lst)
 	{
-		left = lst->next;
-		lst->next->previous = lst->previous;
+		printf("deleting content: %d\n", (*lst)->content);
+		if ((*lst)->next)
+			(*lst)->next->previous = (*lst)->previous;
+		if ((*lst)->previous)
+			(*lst)->previous->next = (*lst)->next;
+		(*lst)->next = NULL;
+		(*lst)->previous = NULL;
+		free(*lst);
+		*lst = NULL;
 	}
-	if (lst->previous)
-	{
-		left = lst->previous;
-		lst->previous->next = lst->next;
-	}
-	lst->next = NULL;
-	lst->previous = NULL;
-	lst = NULL;
-	free(lst);
-	return (left);
 }

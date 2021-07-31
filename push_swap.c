@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/30 19:29:14 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/07/31 15:23:04 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ static int	*test(int *p)
 
 void	push_swap(t_list **x, t_list **y)
 {
-	// display_stacks(*x, *y);
+	display_stacks(*x, *y);
 	sa(x);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
+	pa(x, y);
+	display_stacks(*x, *y);
 	rr(x, y);
-	// display_stacks(*x, *y);
+	display_stacks(*x, *y);
 	rrr(x, y);
-	// display_stacks(*x, *y);
+	display_stacks(*x, *y);
 	ss(x, y);
-	// display_stacks(*x, *y);
+	display_stacks(*x, *y);
 }
 
 void	display_stacks(t_list *a, t_list *b)
