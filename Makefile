@@ -6,7 +6,8 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/07/25 17:36:57 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/11/07 15:25:52 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# gcc *.c && valgrind --leak-check=full ./a.out
