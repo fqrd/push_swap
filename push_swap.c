@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/31 23:22:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/12 18:09:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 
 static int	*test(int *p)
 {
-	p[9] = INT_MAX;
-	p[8] = INT_MIN;
+	p[9] = INT_MIN;
+	p[8] = 990;
 	p[7] = 8;
 	p[6] = 7;
 	p[5] = 6;
 	p[4] = 5;
-	p[3] = 4;
-	p[2] = 3;
+	p[3] = 3;
+	p[2] = 1;
 	p[1] = 2;
-	p[0] = 1;
+	p[0] = INT_MAX;
 	return (p);
 }
 
 void	push_swap(t_list **x, t_list **y)
 {
-	display_stacks(*x, *y);
-	sa(x);
-	display_stacks(*x, *y);
-	pa(x, y);
-	display_stacks(*x, *y);
-	pa(x, y);
-	display_stacks(*x, *y);
-	pa(x, y);
-	display_stacks(*x, *y);
-	pa(x, y);
-	display_stacks(*x, *y);
-	pa(x, y);
-	display_stacks(*x, *y);
-	rr(x, y);
-	display_stacks(*x, *y);
-	rrr(x, y);
-	display_stacks(*x, *y);
-	ss(x, y);
-	display_stacks(*x, *y);
+	// display_stacks(*x, *y);
+	// sa(x);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// rr(x, y);
+	// display_stacks(*x, *y);
+	// rrr(x, y);
+	// display_stacks(*x, *y);
+	// ss(x, y);
+	// display_stacks(*x, *y);
 }
 
 void	display_stacks(t_list *a, t_list *b)
@@ -91,6 +91,9 @@ int	main(void)
 		return (0);
 	na = test(na);
 	a = create_list(na, 10);
+
+	check(a);
+
 	b = NULL;
 	push_swap(&a, &b);
 	ft_lstclear(&a);

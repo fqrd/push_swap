@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/07/31 23:07:41 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/12 18:07:43 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,11 @@ void	ft_lstdelone(t_list **lst)
 		free(*lst);
 		*lst = NULL;
 	}
+}
+
+t_list	*lst_rewind(t_list *lst)
+{
+	while (lst->previous)
+		lst = lst->previous;
+	return (lst);
 }
