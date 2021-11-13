@@ -6,24 +6,24 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/12 18:09:00 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/13 13:54:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 static int	*test(int *p)
 {
-	p[9] = INT_MIN;
-	p[8] = 990;
+	p[9] = 0;
+	p[8] = 10;
 	p[7] = 8;
 	p[6] = 7;
 	p[5] = 6;
-	p[4] = 5;
+	p[4] = 4;
 	p[3] = 3;
 	p[2] = 1;
 	p[1] = 2;
-	p[0] = INT_MAX;
+	p[0] = 9;
 	return (p);
 }
 
