@@ -6,47 +6,32 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 14:27:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:35:32 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-static int	*test(int *p)
-{
-	p[9] = 0;
-	p[8] = 10;
-	p[7] = 8;
-	p[6] = 7;
-	p[5] = 6;
-	p[4] = 4;
-	p[3] = 3;
-	p[2] = 1;
-	p[1] = 2;
-	p[0] = 9;
-	return (p);
-}
-
 void	push_swap(t_list **x, t_list **y)
 {
+	display_stacks(*x, *y);
+	sa(x);
 	// display_stacks(*x, *y);
-	// sa(x);
+	pa(x, y);
 	// display_stacks(*x, *y);
-	// pa(x, y);
+	pa(x, y);
 	// display_stacks(*x, *y);
-	// pa(x, y);
+	pa(x, y);
 	// display_stacks(*x, *y);
-	// pa(x, y);
+	pa(x, y);
 	// display_stacks(*x, *y);
-	// pa(x, y);
+	pa(x, y);
 	// display_stacks(*x, *y);
-	// pa(x, y);
+	rr(x, y);
 	// display_stacks(*x, *y);
-	// rr(x, y);
+	rrr(x, y);
 	// display_stacks(*x, *y);
-	// rrr(x, y);
-	// display_stacks(*x, *y);
-	// ss(x, y);
+	ss(x, y);
 	// display_stacks(*x, *y);
 }
 
@@ -77,30 +62,36 @@ void	display_stacks(t_list *a, t_list *b)
 	printf("\n----------------\n\n");
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
+	int		i;
 	int		*na;
 	int		*nb;
-	int		i;
 	t_list	*a;
 	t_list	*b;
 
-	i = 0;
-	na = malloc(sizeof(int) * 10);
-	if (!na)
+	if (argc < 2)
+	{
+		printf("ERROR: No arguments.\n");
 		return (0);
-	na = test(na);
-	a = create_list(na, 10);
+	}
 
-	if (!check(a))
+	if (!check_inputs(argc, argv))
+	{
+		printf("ERROR: inputs checked.\n");
 		return (0);
-	else
-		printf("CHECK: OK\n");
+	}
+
+	a = create_list(argc, argv);
+	if (!duplicates_check(lst_rewind(a)))
+	{
+		printf("ERROR: duplicates\n");
+		return (0);
+	}
 
 	b = NULL;
 	push_swap(&a, &b);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
-	free(na);
 	return (0);
 }
