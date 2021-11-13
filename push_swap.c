@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 13:54:16 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:27:44 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ int	main(void)
 	na = test(na);
 	a = create_list(na, 10);
 
-	check(a);
+	if (!check(a))
+		return (0);
+	else
+		printf("CHECK: OK\n");
 
 	b = NULL;
 	push_swap(&a, &b);
