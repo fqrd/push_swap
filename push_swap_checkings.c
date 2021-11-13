@@ -6,27 +6,27 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/12 18:51:37 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/13 13:46:09 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	reccursive_duplicates_check(t_list *lst)
+static int	duplicates_check(t_list *lst)
 {
-	int i;
 	t_list *p;
 
-	i = 0;
-	p = lst;
 	while (lst->next)
 	{
+		p = lst;
+		while (p->next)
+		{	
+			p = p->next;
+			if (p->content == lst->content)
+				return (0);
+		}
 		lst = lst->next;
-		if (lst->content == p->content)
-			return (0);
 	}
-	if (p->next && p->next->next)
-		return (reccursive_duplicates_check(p->next));
 	return (1);
 }
 
@@ -69,7 +69,7 @@ void	*check(t_list *lst)
 	// int highest;
 	// int lowest;
 
-	if (!reccursive_duplicates_check(lst_rewind(lst)))
+	if (!duplicates_check(lst_rewind(lst)))
 		return (NULL);
 	else
 	{
