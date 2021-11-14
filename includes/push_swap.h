@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 18:28:01 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/14 14:42:42 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_list	*lst_rewind(t_list *lst);
 
 int	duplicates_check(t_list *lst);
 int	check_inputs(int argc, char *argv[]);
+void	pre_sort(t_list *lst, int len);
 
 void	switchy(t_list **x);
 void	pushy(t_list **x, t_list **y);

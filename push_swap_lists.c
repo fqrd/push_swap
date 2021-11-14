@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 18:23:20 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/14 14:53:14 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list	*create_list(int argc, char *argv[])
 	previous = NULL;
 	while (i-- > 1)
 	{
-		printf("ft_atoi: %d \n", ft_atoi(argv[i]));
+		// printf("ft_atoi: %d \n", ft_atoi(argv[i]));
 		next = ft_lstnew(&previous, ft_atoi(argv[i]));
 		if (previous)
 			previous->next = next;

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 18:35:32 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/14 14:42:36 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	display_stacks(t_list *a, t_list *b)
 
 int	main(int argc, char *argv[])
 {
-	int		i;
 	int		*na;
 	int		*nb;
 	t_list	*a;
@@ -72,12 +71,14 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
+		printf("Error\n");
 		printf("ERROR: No arguments.\n");
 		return (0);
 	}
 
 	if (!check_inputs(argc, argv))
 	{
+		printf("Error\n");
 		printf("ERROR: inputs checked.\n");
 		return (0);
 	}
@@ -85,9 +86,43 @@ int	main(int argc, char *argv[])
 	a = create_list(argc, argv);
 	if (!duplicates_check(lst_rewind(a)))
 	{
+		ft_lstclear(&a);
+		printf("Error\n");
 		printf("ERROR: duplicates\n");
 		return (0);
 	}
+
+	pre_sort(lst_rewind(a), argc - 1);
+
+	// if (argc - 1 == 1)
+	// {
+	// 	return (0);
+	// }
+	// else if (argc - 1 <= 3)
+	// {
+		
+	// }
+	// else if (argc - 1 < 10)
+	// {
+		
+	// }
+	// else if (argc - 1 < 100)
+	// {
+		
+	// }
+	// else if (argc - 1 < 500)
+	// {
+		
+	// }
+	// else if (argc - 1 < 1000)
+	// {
+		
+	// }
+	// else
+	// {
+
+	// }
+
 
 	b = NULL;
 	push_swap(&a, &b);
