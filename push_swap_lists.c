@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 14:53:14 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/14 18:27:11 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,18 @@ t_list	*ft_lstnew(t_list **previous, int content)
 t_list	*create_list(int argc, char *argv[])
 {
 	size_t		i;
-	t_list		*next;
+	t_list		*current;
 	t_list		*previous;
 
-	i = argc;
-	next = NULL;
+	i = 0;
+	current = NULL;
 	previous = NULL;
-	while (i-- > 1)
+	while (++i < argc)
 	{
-		// printf("ft_atoi: %d \n", ft_atoi(argv[i]));
-		next = ft_lstnew(&previous, ft_atoi(argv[i]));
+		current = ft_lstnew(&previous, ft_atoi(argv[i]));
 		if (previous)
-			previous->next = next;
-		previous = next;
+			previous->next = current;
+		previous = current;
 	}
 	previous->next = NULL;
 	return (previous);
@@ -82,7 +81,14 @@ void	ft_lstdelone(t_list **lst)
 
 t_list	*lst_rewind(t_list *lst)
 {
-	while (lst->previous)
-		lst = lst->previous;
+	if (lst)
+	{
+		while (lst)
+		{
+			if (!lst->previous)
+				return (lst);
+			lst = lst->previous;
+		}
+	}
 	return (lst);
 }

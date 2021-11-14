@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_five.c                                       :+:      :+:    :+:   */
+/*   strat_two.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 13:50:02 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 13:54:19 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/11/14 15:40:28 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/11/14 16:53:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
+
+int	sort_two(t_list **a)
+{
+	sa(a);
+	printf("sa\n");
+	return (1);
+}

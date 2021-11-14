@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 14:42:36 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/14 18:28:27 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 
 void	push_swap(t_list **x, t_list **y)
 {
-	display_stacks(*x, *y);
-	sa(x);
 	// display_stacks(*x, *y);
-	pa(x, y);
+	// sa(x);
 	// display_stacks(*x, *y);
-	pa(x, y);
+	// rra(x);
 	// display_stacks(*x, *y);
-	pa(x, y);
+	// ra(x);
 	// display_stacks(*x, *y);
-	pa(x, y);
+	// sa(x);
 	// display_stacks(*x, *y);
-	pa(x, y);
+	// sa(x);
 	// display_stacks(*x, *y);
-	rr(x, y);
+	// pa(x, y);
 	// display_stacks(*x, *y);
-	rrr(x, y);
+	// pa(x, y);
 	// display_stacks(*x, *y);
-	ss(x, y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// pa(x, y);
+	// display_stacks(*x, *y);
+	// rr(x, y);
+	// display_stacks(*x, *y);
+	// rrr(x, y);
+	// display_stacks(*x, *y);
+	// ss(x, y);
 	// display_stacks(*x, *y);
 }
 
@@ -40,22 +48,22 @@ void	display_stacks(t_list *a, t_list *b)
 	printf("***A STACK ***\n");
 	if (a)
 	{
-		a = ft_lsttop(a);
-		while (a->previous)
+		a = lst_rewind(a);
+		while (a->next)
 		{
 			printf("%d\n", a->content);
-			a = a->previous;
+			a = a->next;
 		}
 		printf("%d\n", a->content);
 	}
 	printf("***B STACK ***\n");
 	if (b)
 	{
-		b = ft_lsttop(b);
-		while (b->previous)
+		b = lst_rewind(b);
+		while (b->next)
 		{
 			printf("%d\n", b->content);
-			b = b->previous;
+			b = b->next;
 		}
 		printf("%d\n", b->content);
 	}
@@ -94,38 +102,24 @@ int	main(int argc, char *argv[])
 
 	pre_sort(lst_rewind(a), argc - 1);
 
-	// if (argc - 1 == 1)
-	// {
-	// 	return (0);
-	// }
-	// else if (argc - 1 <= 3)
-	// {
-		
-	// }
-	// else if (argc - 1 < 10)
-	// {
-		
-	// }
-	// else if (argc - 1 < 100)
-	// {
-		
-	// }
-	// else if (argc - 1 < 500)
-	// {
-		
-	// }
-	// else if (argc - 1 < 1000)
-	// {
-		
-	// }
-	// else
-	// {
-
-	// }
-
-
+	a = lst_rewind(a);
+	// printf("first: %d / index: %d / len: %d\n", a->content, a->index, argc - 1);
 	b = NULL;
-	push_swap(&a, &b);
+
+	// display_stacks(a, a);
+
+	if (is_sorted(a))
+	{
+		printf("already sorted \n");
+		return (0);
+	}
+
+	if (argc - 1 == 2)
+		sort_two(&a);
+	else if (argc - 1 == 3)
+		sort_three(&a);
+	else
+		push_swap(&a, &b);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
 	return (0);
