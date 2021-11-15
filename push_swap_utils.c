@@ -6,35 +6,37 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 18:28:36 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:34:57 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-size_t	ft_lstsize(t_list *lst)
+size_t	lst_size(t_list *lst)
 {
 	size_t	i;
 
 	i = 0;
 	if (!lst)
 		return (0);
-	lst = ft_lsttop(lst);
+	lst = lst_rewind(lst);
 	while (lst)
 	{
-		lst = lst->previous;
 		i++;
+		if (!lst->next)
+			break;
+		lst = lst->next;
 	}
 	return (i);
 }
 
-t_list	*ft_lstbottom(t_list *lst)
+t_list	*lst_rewind(t_list *lst)
 {
 	if (lst)
 	{
 		while (lst)
 		{
-			if (lst->previous == NULL)
+			if (!lst->previous)
 				return (lst);
 			lst = lst->previous;
 		}
@@ -42,7 +44,7 @@ t_list	*ft_lstbottom(t_list *lst)
 	return (lst);
 }
 
-t_list	*ft_lsttop(t_list *lst)
+t_list	*lst_forward(t_list *lst)
 {
 	if (lst)
 	{
@@ -56,7 +58,7 @@ t_list	*ft_lsttop(t_list *lst)
 	return (lst);
 }
 
-int	is_sorted(t_list *lst)
+int	lst_issorted(t_list *lst)
 {
 	t_list *p;
 	

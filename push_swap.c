@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 18:28:27 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:34:50 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,25 @@ void	display_stacks(t_list *a, t_list *b)
 	if (a)
 	{
 		a = lst_rewind(a);
-		while (a->next)
+		while (a)
 		{
-			printf("%d\n", a->content);
+			printf("%d > %d\n", a->index, a->content);
+			if (!a->next)
+				break;
 			a = a->next;
 		}
-		printf("%d\n", a->content);
 	}
 	printf("***B STACK ***\n");
 	if (b)
 	{
 		b = lst_rewind(b);
-		while (b->next)
+		while (b)
 		{
-			printf("%d\n", b->content);
+			printf("%d > %d\n", b->index, b->content);
+			if(!b->next)
+				break;
 			b = b->next;
 		}
-		printf("%d\n", b->content);
 	}
 	printf("\n----------------\n\n");
 }
@@ -91,10 +93,11 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 
-	a = create_list(argc, argv);
+	a = lst_create(argc, argv);
+
 	if (!duplicates_check(lst_rewind(a)))
 	{
-		ft_lstclear(&a);
+		lst_clear(&a);
 		printf("Error\n");
 		printf("ERROR: duplicates\n");
 		return (0);
@@ -102,13 +105,15 @@ int	main(int argc, char *argv[])
 
 	pre_sort(lst_rewind(a), argc - 1);
 
+	// display_stacks(a, b);
+
 	a = lst_rewind(a);
 	// printf("first: %d / index: %d / len: %d\n", a->content, a->index, argc - 1);
 	b = NULL;
 
 	// display_stacks(a, a);
 
-	if (is_sorted(a))
+	if (lst_issorted(a))
 	{
 		printf("already sorted \n");
 		return (0);
@@ -118,9 +123,14 @@ int	main(int argc, char *argv[])
 		sort_two(&a);
 	else if (argc - 1 == 3)
 		sort_three(&a);
+	else if (argc - 1 == 5)
+		sort_five(&a, &b);
 	else
 		push_swap(&a, &b);
-	ft_lstclear(&a);
-	ft_lstclear(&b);
+
+	display_stacks(a, b);
+	
+	lst_clear(&a);
+	lst_clear(&b);
 	return (0);
 }

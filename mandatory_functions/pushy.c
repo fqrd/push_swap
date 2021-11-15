@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:06 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 13:53:17 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 13:58:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,26 @@ void	pushy(t_list **x, t_list **y)
 	t_list	*topx;
 	t_list	*topy;
 
-	topx = ft_lsttop(*x);
-	topy = ft_lsttop(*y);
+	topx = lst_rewind(*x);
+	topy = lst_rewind(*y);
 	if (topx)
 	{
-		*y = ft_lstnew(&topy, topx->content);
-		*x = topx->previous;
-		ft_lstdelone(&topx);
+		*x = topx->next;
+		*y = topx;
+		if (topx->next)
+			topx->next->previous = NULL;
+		topx->next = topy;
+		if (topy)
+		 	topy->previous = topx;
 	}
 }
 
 void	pa(t_list **a, t_list **b)
 {
-	pushy(a, b);
+	pushy(b, a);
 }
 
 void	pb(t_list **a, t_list **b)
 {
-	pushy(b, a);
+	pushy(a, b);
 }

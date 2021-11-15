@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 18:26:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:30:40 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ void	switchy(t_list **x)
 	return ;
 }
 
-void	sa(t_list **a)
+t_list	**sa(t_list **a)
 {
 	switchy(a);
+	return (a);
 }
 
-void	sb(t_list **b)
+t_list	**sb(t_list **b)
 {
 	switchy(b);
+	return (b);
 }
 
 void	ss(t_list **a, t_list **b)
