@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:30:40 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:07:52 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,23 @@ void	switchy(t_list **x)
 t_list	**sa(t_list **a)
 {
 	switchy(a);
+	print_action("sa");
 	return (a);
 }
 
 t_list	**sb(t_list **b)
 {
 	switchy(b);
+	print_action("sb");
 	return (b);
 }
 
-void	ss(t_list **a, t_list **b)
+t_list	**ss(t_list **a, t_list **b, int pass_b)
 {
 	switchy(a);
 	switchy(b);
-	return ;
+	print_action("ss");
+	if (pass_b)
+		return (b);
+	return (a);
 }

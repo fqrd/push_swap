@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:31:49 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:06:18 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,23 @@ void	rreturny(t_list **x)
 t_list	**rra(t_list **a)
 {
 	rreturny(a);
+	print_action("rra");
 	return (a);
 }
 
 t_list	**rrb(t_list **b)
 {
 	rreturny(b);
+	print_action("rrb");
 	return (b);
 }
 
-void	rrr(t_list **a, t_list **b)
+t_list	**rrr(t_list **a, t_list **b, int pass_b)
 {
 	rreturny(a);
 	rreturny(b);
-	return ;
+	print_action("rrr");
+	if (pass_b)
+		return (b);
+	return (a);
 }

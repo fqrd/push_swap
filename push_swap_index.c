@@ -6,14 +6,14 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 13:47:24 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:12:06 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
 // unused for now
-static int	get_extremes(t_list *lst, int flag)
+/*static int	get_extremes(t_list *lst, int flag)
 {
 	int nbr;
 	
@@ -29,9 +29,9 @@ static int	get_extremes(t_list *lst, int flag)
 		lst = lst->next;
 	}
 	return (nbr);
-}
+}*/
 
-static void	set_indexes(t_list **lst, int len)
+void	set_indexes(t_list **lst, int len)
 {
 	int gap;
 	t_list *p;
@@ -59,7 +59,7 @@ static void	set_indexes(t_list **lst, int len)
 	}
 }
 
-void	pre_sort(t_list *lst, int len)
+/*void	pre_sort(t_list *lst, int len)
 {
 	// usused start
 		// int	highest;
@@ -69,6 +69,4 @@ void	pre_sort(t_list *lst, int len)
 		// lowest = get_extremes(lst_rewind(lst), 0);
 		// printf("lowest: %d / highest: %d\n", lowest, highest);
 	// unused end
-
-	set_indexes(&lst, len);
-}
+}*/

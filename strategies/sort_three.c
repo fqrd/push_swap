@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:38 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:34:50 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:41:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,10 @@ int	sort_three(t_list **a)
 		return (1);
 	if (((*a)->index == 2 && (*a)->next->index == 3) || 
 		((*a)->index == 1 && (*a)->next->index == 3))
-	{
-		rra(a);
-		printf("rra\n");
-		sort_three(a);
-	}
+		sort_three(rra(a));
 	else if ((*a)->index == 3 && (*a)->next->index == 1)
-	{
-		ra(a);
-		printf("ra\n");
-		sort_three(a);
-	}
+		sort_three(ra(a));
 	else
-	{
-		sa(a);
-		printf("sa\n");
-		sort_three(a);
-	}
+		sort_three(sa(a));
 	return (0);
 }

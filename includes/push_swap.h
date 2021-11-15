@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:34:50 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:11:33 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ t_list	*lst_rewind(t_list *lst);
 // checks & prepare 
 int		duplicates_check(t_list *lst);
 int		check_inputs(int argc, char *argv[]);
-void	pre_sort(t_list *lst, int len);
+// void	pre_sort(t_list *lst, int len);
 int		lst_issorted(t_list *lst);
+void	set_indexes(t_list **lst, int len);
 
 // sorting functions common core
 void	switchy(t_list **x);
@@ -49,15 +50,15 @@ void	rreturny(t_list **x);
 // sorting functions
 t_list	**sa(t_list **a);
 t_list	**sb(t_list **b);
-void	ss(t_list **a, t_list **b);
-void	pa(t_list **a, t_list **b);
-void	pb(t_list **a, t_list **b);
+t_list	**ss(t_list **a, t_list **b, int pass_b);
+t_list	**pa(t_list **a, t_list **b, int pass_b);
+t_list	**pb(t_list **a, t_list **b, int pass_b);
 t_list	**ra(t_list **a);
 t_list	**rb(t_list **b);
-void	rr(t_list **a, t_list **b);
+t_list	**rr(t_list **a, t_list **b, int pass_b);
 t_list	**rra(t_list **a);
 t_list	**rrb(t_list **b);
-void	rrr(t_list **a, t_list **b);
+t_list	**rrr(t_list **a, t_list **b, int pass_b);
 
 // libft
 int		ft_atoi(const char *str);
@@ -71,4 +72,6 @@ int		sort_five(t_list **a, t_list **b);
 
 // debug
 void	display_stacks(t_list *a, t_list *b);
+void	print_action(char *str);
+
 #endif
