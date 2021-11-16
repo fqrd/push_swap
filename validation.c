@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/14 14:52:47 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/16 11:36:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_isinteger(char *str, int negative)
 	return (1);
 }
 
-int	check_inputs(int argc, char *argv[])
+int	valid_number(int argc, char *argv[])
 {
 	int i;
 	int j;

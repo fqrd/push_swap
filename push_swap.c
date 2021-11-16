@@ -6,70 +6,16 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 16:16:26 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/16 11:46:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void	push_swap(t_list **x, t_list **y)
+void	print_action(char *str)
 {
-	// display_stacks(*x, *y);
-	// sa(x);
-	// display_stacks(*x, *y);
-	// rra(x);
-	// display_stacks(*x, *y);
-	// ra(x);
-	// display_stacks(*x, *y);
-	// sa(x);
-	// display_stacks(*x, *y);
-	// sa(x);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// pa(x, y);
-	// display_stacks(*x, *y);
-	// rr(x, y);
-	// display_stacks(*x, *y);
-	// rrr(x, y);
-	// display_stacks(*x, *y);
-	// ss(x, y);
-	// display_stacks(*x, *y);
-}
-
-void	display_stacks(t_list *a, t_list *b)
-{
-	printf("***A STACK ***\n");
-	if (a)
-	{
-		a = lst_rewind(a);
-		while (a)
-		{
-			printf("%d > %d\n", a->index, a->content);
-			if (!a->next)
-				break;
-			a = a->next;
-		}
-	}
-	printf("***B STACK ***\n");
-	if (b)
-	{
-		b = lst_rewind(b);
-		while (b)
-		{
-			printf("%d > %d\n", b->index, b->content);
-			if(!b->next)
-				break;
-			b = b->next;
-		}
-	}
-	printf("\n----------------\n\n");
+	/* TO DO */
+	printf("%s\n", str);
 }
 
 int	main(int argc, char *argv[])
@@ -86,7 +32,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 
-	if (!check_inputs(argc, argv))
+	if (!valid_number(argc, argv))
 	{
 		printf("Error\n");
 		printf("ERROR: inputs checked.\n");
@@ -115,6 +61,7 @@ int	main(int argc, char *argv[])
 
 	if (lst_issorted(a))
 	{
+		lst_clear(&a);
 		printf("already sorted \n");
 		return (0);
 	}
@@ -126,7 +73,7 @@ int	main(int argc, char *argv[])
 	else if (argc - 1 == 5)
 		sort_five(&a, &b);
 	else
-		push_swap(&a, &b);
+		display_stacks(a, b);
 
 	display_stacks(a, b);
 	

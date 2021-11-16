@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:39:24 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/16 11:37:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,4 @@ int	lst_issorted(t_list *lst)
 	// printf("sorted:\n");
 	// display_stacks(lst, lst);
 	return (1);
-}
-
-void	print_action(char *str)
-{
-	/* TO DO */
-	printf("%s\n", str);
 }
