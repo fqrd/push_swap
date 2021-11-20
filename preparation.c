@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_index.c                                  :+:      :+:    :+:   */
+/*   preparation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 16:12:06 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:08:32 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	set_indexes(t_list **lst, int len)
 			break;
 		*lst = (*lst)->next;
 	}
+	*lst = lst_rewind(*lst);
 }
 
 /*void	pre_sort(t_list *lst, int len)

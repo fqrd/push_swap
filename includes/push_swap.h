@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/16 11:35:42 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:14:13 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_list
 t_list	*lst_new(t_list **previous, int content);
 t_list	*lst_forward(t_list *lst);
 void	lst_delete(t_list **lst);
-void	lst_clear(t_list **lst);
+int		lst_clear(t_list **lst, int val);
 size_t	lst_size(t_list *lst);
 t_list	*lst_create(int argc, char *argv[]);
 t_list	*lst_rewind(t_list *lst);

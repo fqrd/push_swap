@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:42 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/16 13:00:57 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:25:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,12 @@ static int	sort_a(t_list **x)
 int	sort_five(t_list **a, t_list **b)
 {
 	int a_size;
-	int b_size;
 	int sorted_a;
-	int sorted_b;
 
 	*a = lst_rewind(*a);
 	*b = lst_rewind(*b);
 	a_size = lst_size(*a);
-	b_size = lst_size(*b);
 	sorted_a = lst_issorted(*a);
-	sorted_b = lst_issorted(*b);
 	if (a_size == 5 && sorted_a)
 		return (1);
 	if (a_size > 3)

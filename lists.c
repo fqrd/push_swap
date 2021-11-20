@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_lists.c                                  :+:      :+:    :+:   */
+/*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:33:55 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/20 19:25:25 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list	*lst_new(t_list **previous, int content)
 
 t_list	*lst_create(int argc, char *argv[])
 {
-	size_t		i;
+	int		i;
 	t_list		*current;
 	t_list		*previous;
 
@@ -44,10 +44,10 @@ t_list	*lst_create(int argc, char *argv[])
 		previous = current;
 	}
 	previous->next = NULL;
-	return (previous);
+	return (lst_rewind(previous));
 }
 
-void	lst_clear(t_list **lst)
+int	lst_clear(t_list **lst, int val)
 {
 	t_list	*pre;
 
@@ -62,6 +62,7 @@ void	lst_clear(t_list **lst)
 		}
 	}
 	lst = NULL;
+	return (val);
 }
 
 void	lst_delete(t_list **lst)
