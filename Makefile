@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/11/24 12:01:43 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/11/24 12:10:35 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 
 
 # make
-# gcc -Wall -Werror -Wextra strategies/*.c mandatory_functions/*.c *.c  &&  ./a.out 1 205550 8 9 -2147483648
+# gcc -Wall -Werror -Wextra strategies/*.c mandatory_functions/*.c *.c libft/libft.a &&  ./a.out 1 205550 8 9 -2147483648
  
 
 CC = cc
@@ -32,4 +32,4 @@ LIBS_PATH = ./libft/
 	cd $(LIBS_PATH) && $(MAKE)
 
 clean:
-	cd $(LIBS_PATH)src && rm ./*.o
+	rm ./a.out && cd $(LIBS_PATH) && $(MAKE) fclean
