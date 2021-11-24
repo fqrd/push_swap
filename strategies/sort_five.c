@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:42 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 12:17:27 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	top_to_b(t_stack **a, t_stack **b)
 static int	sort_a(t_stack **x)
 {
 	*x = lst_rewind(*x);
-	if (lst_issorted(*x))
+	if (lst_issorted(*x, 0))
 		return (1);
 	if (((*x)->index == 4 && (*x)->next->index == 5) || 
 		((*x)->index == 3 && (*x)->next->index == 5))
@@ -52,14 +52,14 @@ int	sort_five(t_stack **a, t_stack **b)
 	*a = lst_rewind(*a);
 	*b = lst_rewind(*b);
 	a_size = lst_size(*a);
-	sorted_a = lst_issorted(*a);
+	sorted_a = lst_issorted(*a, 0);
 	if (a_size == 5 && sorted_a)
 		return (1);
 	if (a_size > 3)
 		top_to_b(a, b);
 	if (lst_size(*a) == 3 && !sorted_a)
 		sort_a(a);
-	if (!lst_issorted(*(pa(pa(a, b, 0), b, 0))))
+	if (!lst_issorted(*(pa(pa(a, b, 0), b, 0)), 0))
 		sa(a);
 	sort_five(a, b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:43 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 12:21:18 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_stack	*lst_rewind(t_stack *lst);
 int		duplicates_check(t_stack *lst);
 int		valid_number(int argc, char *argv[]);
 // void	pre_sort(t_stack *lst, int len);
-int		lst_issorted(t_stack *lst);
+int		lst_issorted(t_stack *lst, int descending);
 void	set_indexes(t_stack **lst, int len);
 
 // sorting functions common core
@@ -67,9 +67,10 @@ int		ft_isspace(int c);
 int		ft_isdigit(int c);
 
 // sort
-int		sort_two(t_stack **a);
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
+int		sort_above(t_stack **a, t_stack **b);
+
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);
