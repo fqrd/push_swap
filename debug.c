@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:34:37 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:16:21 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	display_stacks(t_stack *a, t_stack *b)
 {
+	printf("\n----------------\n\n");
 	printf("***A STACK ***\n");
 	if (a)
 	{
@@ -25,6 +26,7 @@ void	display_stacks(t_stack *a, t_stack *b)
 				break;
 			a = a->next;
 		}
+		a = lst_rewind(a);
 	}
 	printf("***B STACK ***\n");
 	if (b)
@@ -37,6 +39,7 @@ void	display_stacks(t_stack *a, t_stack *b)
 				break;
 			b = b->next;
 		}
+		b = lst_rewind(b);
 	}
 	printf("\n----------------\n\n");
 }

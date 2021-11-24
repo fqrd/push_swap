@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 12:21:18 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:39:54 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int		ft_isdigit(int c);
 // sort
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
-int		sort_above(t_stack **a, t_stack **b);
-
+int		sort_above(size_t args, t_stack **a, t_stack **b);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);

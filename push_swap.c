@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 12:20:56 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:39:24 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ int	init_checks(int argc, char *argv[], t_stack **a)
 	return (1);
 }
 
-void	push_swap(int argc, t_stack **a, t_stack **b)
+void	push_swap(size_t argc, t_stack **a, t_stack **b)
 {
-	if (argc - 1 <= 3)
+	if (argc <= 3)
 		sort_three(a);
-	else if (argc - 1 == 5)
+	else if (argc == 5)
 		sort_five(a, b);
 	else
-		sort_above(a, b);
+	{
+		sort_above(argc, a, b);
+	}
 }
 
 int	exec(int argc, char *argv[])
@@ -52,7 +54,7 @@ int	exec(int argc, char *argv[])
 	set_indexes(&a, lst_size(a));
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
-	push_swap(argc, &a, &b);
+	push_swap((size_t) argc - 1, &a, &b);
 	
 	/* debug */
 	display_stacks(a, b);
