@@ -6,14 +6,14 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/20 19:08:32 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
 // unused for now
-/*static int	get_extremes(t_list *lst, int flag)
+/*static int	get_extremes(t_stack *lst, int flag)
 {
 	int nbr;
 	
@@ -31,10 +31,10 @@
 	return (nbr);
 }*/
 
-void	set_indexes(t_list **lst, int len)
+void	set_indexes(t_stack **lst, int len)
 {
 	int gap;
-	t_list *p;
+	t_stack *p;
 
 	// printf("len: %d\n", len);
 
@@ -60,7 +60,7 @@ void	set_indexes(t_list **lst, int len)
 	*lst = lst_rewind(*lst);
 }
 
-/*void	pre_sort(t_list *lst, int len)
+/*void	pre_sort(t_stack *lst, int len)
 {
 	// usused start
 		// int	highest;

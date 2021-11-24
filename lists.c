@@ -6,17 +6,17 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/20 19:25:25 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-t_list	*lst_new(t_list **previous, int content)
+t_stack	*lst_new(t_stack **previous, int content)
 {
-	t_list	*list;
+	t_stack	*list;
 
-	list = malloc(sizeof(t_list) * 1);
+	list = malloc(sizeof(t_stack) * 1);
 	if (!list)
 		return (NULL);
 	list->content = content;
@@ -27,11 +27,11 @@ t_list	*lst_new(t_list **previous, int content)
 	return (list);
 }
 
-t_list	*lst_create(int argc, char *argv[])
+t_stack	*lst_create(int argc, char *argv[])
 {
 	int		i;
-	t_list		*current;
-	t_list		*previous;
+	t_stack		*current;
+	t_stack		*previous;
 
 	i = 0;
 	current = NULL;
@@ -47,9 +47,9 @@ t_list	*lst_create(int argc, char *argv[])
 	return (lst_rewind(previous));
 }
 
-int	lst_clear(t_list **lst, int val)
+int	lst_clear(t_stack **lst, int val)
 {
-	t_list	*pre;
+	t_stack	*pre;
 
 	if (lst != NULL)
 	{
@@ -65,7 +65,7 @@ int	lst_clear(t_list **lst, int val)
 	return (val);
 }
 
-void	lst_delete(t_list **lst)
+void	lst_delete(t_stack **lst)
 {
 	if (*lst)
 	{

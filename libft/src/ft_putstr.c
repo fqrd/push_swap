@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:35:19 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 16:58:48 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/08/01 18:01:29 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/06 16:42:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "../include/libft.h"
+
+int	ft_putstr(char *s)
 {
-	if (c < 48 || c > 57)
-		return (0);
-	return (1);
+	return (write(1, s, ft_strlen(s)));
 }

@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/04/12 15:38:22 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/06 12:40:33 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../include/libft.h"
 
-int	sort_two(t_stack **a)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	sa(a);
-	return (1);
+	char	*p;
+	size_t	i;
+
+	if (size <= 0)
+		return (NULL);
+	i = -1;
+	p = malloc(nmemb * size);
+	if (!p)
+		return (NULL);
+	while (++i < (size * nmemb))
+		p[i] = '\0';
+	return (p);
 }

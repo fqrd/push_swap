@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/04/04 14:21:49 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/04 19:02:48 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../include/libft.h"
 
-int	sort_two(t_stack **a)
+int	ft_isalnum(int c)
 {
-	sa(a);
-	return (1);
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }

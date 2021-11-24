@@ -6,16 +6,16 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:26 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/15 16:07:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	returny(t_list **x)
+void	returny(t_stack **x)
 {
-	t_list	*top;
-	t_list	*bottom;
+	t_stack	*top;
+	t_stack	*bottom;
 
 	bottom = lst_rewind(*x);
 	if (!bottom || !bottom->next)
@@ -28,21 +28,21 @@ void	returny(t_list **x)
 	return ;
 }
 
-t_list	**ra(t_list **a)
+t_stack	**ra(t_stack **a)
 {
 	returny(a);
 	print_action("ra");
 	return (a);
 }
 
-t_list	**rb(t_list **b)
+t_stack	**rb(t_stack **b)
 {
 	returny(b);
 	print_action("rb");
 	return (b);
 }
 
-t_list	**rr(t_list **a, t_list **b, int pass_b)
+t_stack	**rr(t_stack **a, t_stack **b, int pass_b)
 {
 	returny(a);
 	returny(b);

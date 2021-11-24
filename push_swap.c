@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/20 19:26:20 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_action(char *str)
 	printf("%s\n", str);
 }
 
-int	init_checks(int argc, char *argv[], t_list **a)
+int	init_checks(int argc, char *argv[], t_stack **a)
 {
 	if (argc < 2)
 		return (0);
@@ -30,7 +30,7 @@ int	init_checks(int argc, char *argv[], t_list **a)
 	return (1);
 }
 
-void	push_swap(int argc, t_list **a, t_list **b)
+void	push_swap(int argc, t_stack **a, t_stack **b)
 {
 	if (argc - 1 <= 3)
 		sort_three(a);
@@ -42,8 +42,8 @@ void	push_swap(int argc, t_list **a, t_list **b)
 
 int	exec(int argc, char *argv[])
 {
-	t_list	*a;
-	t_list	*b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = NULL;
 	b = NULL;

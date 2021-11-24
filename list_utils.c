@@ -6,13 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/20 19:25:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-size_t	lst_size(t_list *lst)
+size_t	lst_size(t_stack *lst)
 {
 	size_t	i;
 
@@ -31,7 +31,7 @@ size_t	lst_size(t_list *lst)
 	return (i);
 }
 
-t_list	*lst_rewind(t_list *lst)
+t_stack	*lst_rewind(t_stack *lst)
 {
 	if (lst)
 	{
@@ -45,7 +45,7 @@ t_list	*lst_rewind(t_list *lst)
 	return (lst);
 }
 
-t_list	*lst_forward(t_list *lst)
+t_stack	*lst_forward(t_stack *lst)
 {
 	if (lst)
 	{
@@ -59,7 +59,7 @@ t_list	*lst_forward(t_list *lst)
 	return (lst);
 }
 
-int	lst_issorted(t_list *lst)
+int	lst_issorted(t_stack *lst)
 {
 	lst = lst_rewind(lst);
 	while (lst)

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_countchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/08/05 16:54:46 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/05 16:59:19 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../include/libft.h"
 
-int	sort_two(t_stack **a)
+size_t	ft_countchar(char *str, char c)
 {
-	sa(a);
-	return (1);
+	size_t	count;
+	size_t	i;
+
+	i = 0;
+	count = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
 }

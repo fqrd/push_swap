@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/08/02 17:52:45 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/04 19:02:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-int	sort_two(t_stack **a)
+int	ft_power(int nb, int power)
 {
-	sa(a);
-	return (1);
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	if (power > 1)
+		nb *= ft_power(nb, --power);
+	return (nb);
 }

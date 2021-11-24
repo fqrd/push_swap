@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_charpos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/01 18:02:30 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 17:03:23 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/08/23 23:54:00 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/23 23:55:33 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(int c)
+#include "../include/libft.h"
+
+size_t	ft_charpos(char *str, char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (i);
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
 	return (0);
 }

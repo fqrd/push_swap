@@ -6,13 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:38 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/16 11:42:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	sort_three(t_list **a)
+int	sort_three(t_stack **a)
 {
 	*a = lst_rewind(*a);
 	if (lst_issorted(*a))

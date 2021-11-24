@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_int.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 17:32:29 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/13 17:41:05 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:03:04 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../include/libft.h"
 
 static long long	prevent_overflow(char c, long long *nbr)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_checkings.c                              :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/16 11:36:02 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	valid_number(int argc, char *argv[])
 	return (1);
 }
 
-int	duplicates_check(t_list *lst)
+int	duplicates_check(t_stack *lst)
 {
-	t_list *p;
+	t_stack *p;
 	while (lst->next)
 	{
 		// printf("dup check: %d \n", lst->content);

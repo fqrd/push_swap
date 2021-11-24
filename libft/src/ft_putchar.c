@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/08/01 17:59:54 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/08/06 16:43:39 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../include/libft.h"
 
-int	sort_two(t_stack **a)
+int	ft_putchar(unsigned char c)
 {
-	sa(a);
-	return (1);
+	return (write (1, &c, 1));
 }
