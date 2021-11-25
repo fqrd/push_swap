@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/11/24 16:37:50 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/11/25 10:56:27 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 
 
 # make
-# gcc -Wall -Werror -Wextra strategies/*.c mandatory_functions/*.c *.c libft/libft.a &&  ./a.out 1 205550 8 9 -2147483648
+# gcc -Wall -Werror -Wextra strategies/*.c mandatory_functions/*.c *.c libft/libft.a &&  ./a.out 4 7 6 1 8 9 0 3 2 5
  
 
 CC = cc
