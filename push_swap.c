@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:39:24 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:12:32 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	push_swap(size_t argc, t_stack **a, t_stack **b)
 		sort_five(a, b);
 	else
 	{
-		sort_above(argc, a, b);
+		sort_above_entry(a, b);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 15:39:54 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:33:50 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*previous;
 }					t_stack;
+
+typedef struct s_obj
+{
+	size_t limita;
+	size_t limitb;
+	size_t sizea;
+	size_t sizeb;
+	size_t positiona; 
+	size_t positionb;
+	size_t	actions;
+}					t_obj;
 
 // list manipulations functions
 t_stack	*lst_new(t_stack **previous, int content);
@@ -69,7 +80,8 @@ int		ft_isdigit(int c);
 // sort
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
-int		sort_above(size_t args, t_stack **a, t_stack **b);
+void	sort_above_entry(t_stack **a, t_stack **b);
+int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);
