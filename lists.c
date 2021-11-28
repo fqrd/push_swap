@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:23:51 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_stack	*lst_new(t_stack **previous, int content)
 t_stack	*lst_create(int argc, char *argv[])
 {
 	int		i;
-	t_stack		*current;
-	t_stack		*previous;
+	t_stack	*current;
+	t_stack	*previous;
 
 	i = 0;
 	current = NULL;

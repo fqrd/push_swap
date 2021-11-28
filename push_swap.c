@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/25 13:12:32 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:29:39 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	print_action(char *str)
 {
-	/* TO DO */
 	printf("%s\n", str);
 }
 
@@ -55,10 +54,7 @@ int	exec(int argc, char *argv[])
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
 	push_swap((size_t) argc - 1, &a, &b);
-	
-	/* debug */
 	display_stacks(a, b);
-	
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 

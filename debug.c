@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 11:34:37 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:16:21 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:31:30 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	display_stacks(t_stack *a, t_stack *b)
 {
-	printf("\n----------------\n\n");
-	printf("***A STACK ***\n");
+	printf("\n----------------\n\n***A STACK ***\n");
 	if (a)
 	{
 		a = lst_rewind(a);
@@ -23,7 +22,7 @@ void	display_stacks(t_stack *a, t_stack *b)
 		{
 			printf("%d > %d\n", a->index, a->content);
 			if (!a->next)
-				break;
+				break ;
 			a = a->next;
 		}
 		a = lst_rewind(a);
@@ -35,8 +34,8 @@ void	display_stacks(t_stack *a, t_stack *b)
 		while (b)
 		{
 			printf("%d > %d\n", b->index, b->content);
-			if(!b->next)
-				break;
+			if (!b->next)
+				break ;
 			b = b->next;
 		}
 		b = lst_rewind(b);

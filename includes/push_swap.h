@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/25 13:33:50 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:32:19 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef struct s_stack
 
 typedef struct s_obj
 {
-	size_t limita;
-	size_t limitb;
-	size_t sizea;
-	size_t sizeb;
-	size_t positiona; 
-	size_t positionb;
+	size_t	limita;
+	size_t	limitb;
+	size_t	sizea;
+	size_t	sizeb;
+	size_t	positiona;
+	size_t	positionb;
 	size_t	actions;
 }					t_obj;
 

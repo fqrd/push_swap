@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 12:15:53 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:26:54 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	lst_size(t_stack *lst)
 	{
 		i++;
 		if (!lst->next)
-			break;
+			break ;
 		lst = lst->next;
 	}
 	lst = lst_rewind(lst);
@@ -62,7 +62,6 @@ t_stack	*lst_forward(t_stack *lst)
 int	lst_issorted(t_stack *lst, int descending)
 {
 	lst = lst_rewind(lst);
-
 	if (descending)
 	{
 		while (lst)
@@ -70,7 +69,7 @@ int	lst_issorted(t_stack *lst, int descending)
 			if (lst->next && lst->index <= lst->next->index)
 				return (0);
 			if (!lst->next)
-				break;
+				break ;
 			lst = lst->next;
 		}
 	}
@@ -81,7 +80,7 @@ int	lst_issorted(t_stack *lst, int descending)
 			if (lst->next && lst->index >= lst->next->index)
 				return (0);
 			if (!lst->next)
-				break;
+				break ;
 			lst = lst->next;
 		}
 	}

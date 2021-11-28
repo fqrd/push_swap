@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:42 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 12:17:27 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:34:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	top_to_b(t_stack **a, t_stack **b)
 		return (top_to_b(pb(a, b, 0), b));
 	if ((*a)->next && (((*a)->next->index == 1 || (*a)->next->index == 2)))
 		return (top_to_b(ra(a), b));
-	else if ((*a)->next && (*a)->next->next && 
-		(((*a)->next->next->index == 1 || (*a)->next->next->index == 2)))
+	else if ((*a)->next && (*a)->next->next
+		&& (((*a)->next->next->index == 1 || (*a)->next->next->index == 2)))
 		return (top_to_b(ra(a), b));
 	else
 		return (top_to_b(rra(a), b));
@@ -34,8 +34,8 @@ static int	sort_a(t_stack **x)
 	*x = lst_rewind(*x);
 	if (lst_issorted(*x, 0))
 		return (1);
-	if (((*x)->index == 4 && (*x)->next->index == 5) || 
-		((*x)->index == 3 && (*x)->next->index == 5))
+	if (((*x)->index == 4 && (*x)->next->index == 5)
+		|| ((*x)->index == 3 && (*x)->next->index == 5))
 		sort_a(rra(x));
 	else if ((*x)->index == 5 && (*x)->next->index == 3)
 		sort_a(ra(x));
@@ -46,8 +46,8 @@ static int	sort_a(t_stack **x)
 
 int	sort_five(t_stack **a, t_stack **b)
 {
-	int a_size;
-	int sorted_a;
+	int	a_size;
+	int	sorted_a;
 
 	*a = lst_rewind(*a);
 	*b = lst_rewind(*b);

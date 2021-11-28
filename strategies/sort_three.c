@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:38 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 12:16:37 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:33:11 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	sort_three(t_stack **a)
 	*a = lst_rewind(*a);
 	if (lst_issorted(*a, 0))
 		return (1);
-	if (((*a)->index == 2 && (*a)->next->index == 3) || 
-		((*a)->index == 1 && (*a)->next->index == 3))
+	if (((*a)->index == 2 && (*a)->next->index == 3)
+		|| ((*a)->index == 1 && (*a)->next->index == 3))
 		sort_three(rra(a));
 	else if ((*a)->index == 3 && (*a)->next->index == 1)
 		sort_three(ra(a));
