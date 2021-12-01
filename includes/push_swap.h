@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/28 15:32:19 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:43:01 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_obj
 	size_t	positiona;
 	size_t	positionb;
 	size_t	actions;
+	struct	s_stack	*firsta;
+	struct	s_stack	*lasta;
+	struct	s_stack	*firstb;
+	struct	s_stack	*lastb;
 }					t_obj;
 
 // list manipulations functions
@@ -51,6 +55,8 @@ int		duplicates_check(t_stack *lst);
 int		valid_number(int argc, char *argv[]);
 // void	pre_sort(t_stack *lst, int len);
 int		lst_issorted(t_stack *lst, int descending);
+int		lst_is_kinda_sorted_a(t_stack *a, t_obj *obj);
+int		lst_is_kinda_sorted_b(t_stack *b, t_obj *obj);
 void	set_indexes(t_stack **lst, int len);
 
 // sorting functions common core
@@ -85,6 +91,6 @@ int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);
-void	print_action(char *str);
+void	print_action(char *str, int is_a_stack);
 
 #endif

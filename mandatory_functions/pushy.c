@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:06 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/28 15:32:48 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:43:18 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	pushy(t_stack **x, t_stack **y)
 t_stack	**pa(t_stack **a, t_stack **b, int pass_b)
 {
 	pushy(b, a);
-	print_action("pa");
+	print_action("pa", 1);
 	if (pass_b)
 		return (b);
 	return (a);
@@ -43,7 +43,7 @@ t_stack	**pa(t_stack **a, t_stack **b, int pass_b)
 t_stack	**pb(t_stack **a, t_stack **b, int pass_b)
 {
 	pushy(a, b);
-	print_action("pb");
+	print_action("pb", 0);
 	if (pass_b)
 		return (b);
 	return (a);

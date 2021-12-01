@@ -6,15 +6,22 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/28 15:29:39 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:42:48 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void	print_action(char *str)
+void	print_action(char *str, int is_a_stack)
 {
-	printf("%s\n", str);
+	char *c1;
+	char *c2;
+
+	c1 = "\x1B[0m";
+	c2 = "\x1B[0m";
+	if (is_a_stack)
+		c1 = "\x1B[34m";
+	printf("%s %s %s\n", c1, str, c2);
 }
 
 int	init_checks(int argc, char *argv[], t_stack **a)

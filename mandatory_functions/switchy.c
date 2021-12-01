@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/24 11:51:31 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:43:47 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	switchy(t_stack **x)
 t_stack	**sa(t_stack **a)
 {
 	switchy(a);
-	print_action("sa");
+	print_action("sa", 1);
 	return (a);
 }
 
 t_stack	**sb(t_stack **b)
 {
 	switchy(b);
-	print_action("sb");
+	print_action("sb", 0);
 	return (b);
 }
 
@@ -48,7 +48,7 @@ t_stack	**ss(t_stack **a, t_stack **b, int pass_b)
 {
 	switchy(a);
 	switchy(b);
-	print_action("ss");
+	print_action("ss", 0);
 	if (pass_b)
 		return (b);
 	return (a);
