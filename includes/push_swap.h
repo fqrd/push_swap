@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/01 16:43:01 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:42:25 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ t_stack	*lst_rewind(t_stack *lst);
 
 // checks & prepare 
 int		duplicates_check(t_stack *lst);
-int		valid_number(int argc, char *argv[]);
+// int		valid_number(int argc, char *argv[]);
+int	ft_isinteger(char *str, int negative);
+
+
 // void	pre_sort(t_stack *lst, int len);
 int		lst_issorted(t_stack *lst, int descending);
 int		lst_is_kinda_sorted_a(t_stack *a, t_obj *obj);
