@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/01 18:10:36 by fcaquard          #+#    #+#              #
-#    Updated: 2021/11/24 12:10:08 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/13 13:31:53 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS = \
 	$(SRC_FOLDER)ft_isascii.c	\
 	$(SRC_FOLDER)ft_isdigit.c	\
 	$(SRC_FOLDER)ft_isprint.c	\
-	$(SRC_FOLDER)ft_isspace.c	\
 	$(SRC_FOLDER)ft_tolower.c	\
 	$(SRC_FOLDER)ft_toupper.c	\
 	$(SRC_FOLDER)ft_atoi.c		\

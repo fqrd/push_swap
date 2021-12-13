@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/12 19:42:25 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 11:58:38 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ t_stack	**rr(t_stack **a, t_stack **b, int pass_b);
 t_stack	**rra(t_stack **a);
 t_stack	**rrb(t_stack **b);
 t_stack	**rrr(t_stack **a, t_stack **b, int pass_b);
-
-// libft
-int		ft_atoi(const char *str);
-int		ft_isspace(int c);
-int		ft_isdigit(int c);
 
 // sort
 int		sort_three(t_stack **a);

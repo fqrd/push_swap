@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 20:00:07 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/10/28 19:18:10 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 11:57:06 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,6 @@ int	find_char(t_list **s, char c)
 		(*s)->end++;
 	}
 	return (0);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	index;
-
-	index = 0;
-	if (str == NULL)
-		return (index);
-	while (str[index] != '\0')
-		index++;
-	return (index);
 }
 
 char	*substrjoin(t_list **s, size_t start, size_t len, size_t restlen)
