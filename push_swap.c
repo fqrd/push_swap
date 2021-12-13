@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 11:30:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 13:55:45 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	print_action(char *str, int is_a_stack)
 {
-	char *c1;
-	char *c2;
+	(void) is_a_stack;
+	// char *c1;
+	// char *c2;
 
-	c1 = "\x1B[0m";
-	c2 = "\x1B[0m";
-	if (is_a_stack)
-		c1 = "\x1B[34m";
-	printf("%s %s %s\n", c1, str, c2);
+	// c1 = "\x1B[0m";
+	// c2 = "\x1B[0m";
+	// if (is_a_stack)
+	// 	c1 = "\x1B[34m";
+	// printf("%s %s %s\n", c1, str, c2);
+	ft_printf("%s\n", str);
 }
 
 static int	free_splits(char **splits)
@@ -119,7 +121,7 @@ int	exec(int argc, char *argv[])
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
 	push_swap((size_t) argc - 1, &a, &b);
-	display_stacks(a, b);
+	// display_stacks(a, b);
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 
