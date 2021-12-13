@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 17:00:09 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:08:53 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,26 @@ typedef struct s_obj
 }					t_obj;
 
 // list manipulations functions
-t_stack	*lst_new(t_stack **previous, int content);
-t_stack	*lst_forward(t_stack *lst);
-void	lst_delete(t_stack **lst);
 int		lst_clear(t_stack **lst, int val);
+void	lst_delete(t_stack **lst);
 size_t	lst_size(t_stack *lst);
 t_stack	*lst_create(int argc, char *argv[]);
+t_stack	*lst_forward(t_stack *lst);
+t_stack	*lst_new(t_stack **previous, int content);
 t_stack	*lst_rewind(t_stack *lst);
 
 // validation
-int	parser(int argc, char *argv[], t_stack **a);
-int	duplicates_check(t_stack *lst);
+int		duplicates_check(t_stack *lst);
+int		parser(int argc, char *argv[], t_stack **a);
 
-// void	pre_sort(t_stack *lst, int len);
-int		lst_issorted(t_stack *lst, int descending);
-int		lst_is_kinda_sorted_a(t_stack *a, t_obj *obj);
-int		lst_is_kinda_sorted_b(t_stack *b, t_obj *obj);
+// preparation
 void	set_indexes(t_stack **lst, int len);
 
-// sorting functions common core
-void	switchy(t_stack **x);
+// sorting functions
 void	pushy(t_stack **x, t_stack **y);
 void	returny(t_stack **x);
 void	rreturny(t_stack **x);
-
-// sorting functions
-t_stack	**sa(t_stack **a);
-t_stack	**sb(t_stack **b);
-t_stack	**ss(t_stack **a, t_stack **b, int pass_b);
+void	switchy(t_stack **x);
 t_stack	**pa(t_stack **a, t_stack **b, int pass_b);
 t_stack	**pb(t_stack **a, t_stack **b, int pass_b);
 t_stack	**ra(t_stack **a);
@@ -78,12 +70,24 @@ t_stack	**rr(t_stack **a, t_stack **b, int pass_b);
 t_stack	**rra(t_stack **a);
 t_stack	**rrb(t_stack **b);
 t_stack	**rrr(t_stack **a, t_stack **b, int pass_b);
+t_stack	**sa(t_stack **a);
+t_stack	**sb(t_stack **b);
+t_stack	**ss(t_stack **a, t_stack **b, int pass_b);
 
+/**
+ * OPEN TO CHANGES
+ */
+ 
 // sort
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
 void	sort_above_entry(t_stack **a, t_stack **b);
 int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
+
+// void	pre_sort(t_stack *lst, int len);
+int		lst_issorted(t_stack *lst, int descending);
+int		lst_is_kinda_sorted_a(t_stack *a, t_obj *obj);
+int		lst_is_kinda_sorted_b(t_stack *b, t_obj *obj);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);

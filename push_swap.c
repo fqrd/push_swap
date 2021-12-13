@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 16:59:56 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:04:49 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_action(char *str)
 	ft_printf("%s\n", str);
 }
 
-void	push_swap(size_t argc, t_stack **a, t_stack **b)
+void	sort(size_t argc, t_stack **a, t_stack **b)
 {
 	if (argc <= 3)
 		sort_three(a);
@@ -29,7 +29,7 @@ void	push_swap(size_t argc, t_stack **a, t_stack **b)
 	}
 }
 
-static int	controller(int argc, char *argv[])
+static int	push_swap(int argc, char *argv[])
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -45,14 +45,14 @@ static int	controller(int argc, char *argv[])
 	set_indexes(&a, lst_size(a));
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
-	push_swap((size_t) argc - 1, &a, &b);
+	sort((size_t) argc - 1, &a, &b);
 	display_stacks(a, b);
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 
 int	main(int argc, char *argv[])
 {
-	if (!controller(argc, argv))
+	if (!push_swap(argc, argv))
 		printf("Error\n");
 	return (0);
 }
