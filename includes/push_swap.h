@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 11:58:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:00:09 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ size_t	lst_size(t_stack *lst);
 t_stack	*lst_create(int argc, char *argv[]);
 t_stack	*lst_rewind(t_stack *lst);
 
-// checks & prepare 
-int		duplicates_check(t_stack *lst);
-// int		valid_number(int argc, char *argv[]);
-int	ft_isinteger(char *str, int negative);
-
+// validation
+int	parser(int argc, char *argv[], t_stack **a);
+int	duplicates_check(t_stack *lst);
 
 // void	pre_sort(t_stack *lst, int len);
 int		lst_issorted(t_stack *lst, int descending);
@@ -89,6 +87,6 @@ int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);
-void	print_action(char *str, int is_a_stack);
+void	print_action(char *str);
 
 #endif

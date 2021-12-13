@@ -6,13 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 11:23:07 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:59:10 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	ft_isinteger(char *str, int negative)
+static int	ft_isinteger(char *str, int negative)
 {
 	long long	nbr;
 	int			i;
@@ -30,11 +30,70 @@ int	ft_isinteger(char *str, int negative)
 	return (1);
 }
 
+static int	valid_number(char *str)
+{
+	int	i;
+	int	negative;
+
+	negative = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 && str[i] == '-')
+			negative = 1;
+		else
+		{
+			if (!ft_isdigit(str[i]))
+				return (0);
+		}
+		i++;
+	}
+	if (!ft_isinteger(str, negative))
+		return (0);
+	return (1);
+}
+
+static int	free_splits(char **splits)
+{
+	int	i;
+
+	i = 0;
+	while (splits[i])
+		free (splits[i++]);
+	free(splits);
+	return (0);
+}
+
+int	parser(int argc, char *argv[], t_stack **a)
+{
+	int		arg;
+	int		i;
+	char	**splits;
+
+	arg = 1;
+	while (arg < argc)
+	{
+		splits = ft_split(argv[arg], ' ');
+		i = 0;
+		while (splits[i])
+		{
+			if (!valid_number(splits[i]))
+				return (free_splits(splits));
+			else
+				*a = lst_new(a, ft_atoi(splits[i]));
+			i++;
+		}
+		free_splits(splits);
+		arg++;
+	}
+	return (1);
+}
+
 int	duplicates_check(t_stack *lst)
 {
 	t_stack	*p;
-	lst = lst_rewind(lst);
 
+	lst = lst_rewind(lst);
 	while (lst && lst->next)
 	{
 		p = lst;
