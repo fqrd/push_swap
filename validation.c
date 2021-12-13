@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/12 20:52:42 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/13 11:23:07 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_isinteger(char *str, int negative)
 int	duplicates_check(t_stack *lst)
 {
 	t_stack	*p;
+	lst = lst_rewind(lst);
 
 	while (lst && lst->next)
 	{
