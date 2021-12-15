@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 17:04:49 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/15 19:12:36 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	push_swap(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
+
 	if (argc < 2)
 		return (0);
 	if (!parser(argc, argv, &a))
@@ -47,7 +48,8 @@ static int	push_swap(int argc, char *argv[])
 		return (lst_clear(&a, 1));
 	sort((size_t) argc - 1, &a, &b);
 	display_stacks(a, b);
-	return (lst_clear(&a, 1) && lst_clear(&b, 1));
+	return (lst_clear(&a, 1));
+	// return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 
 int	main(int argc, char *argv[])
