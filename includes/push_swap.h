@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/17 18:03:36 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 00:09:22 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,20 @@ typedef struct s_obj
 
 typedef	struct	s_route
 {
-	size_t	ra;
-	size_t	ra_index;
-	size_t	rra;
-	size_t	rra_index;
-	size_t	moves_b;
-	size_t	rr;
-	size_t	rrr;
+	int candidate_ra_index;
+	int candidate_ra_position;
+	int candidate_ra_destination;
+	int candidate_ra_rb;
+	int candidate_ra_rrb;
+
+	int candidate_rra_index;
+	int candidate_rra_position;
+	int candidate_rra_destination;
+	int candidate_rra_rb;
+	int candidate_rra_rrb;
+
+	int	rr;
+	int	rrr;
 }				t_route;
 
 // list manipulations functions
@@ -100,7 +107,7 @@ t_stack	**ss(t_stack **a, t_stack **b, int pass_b);
  
 
 void find_candidate(t_stack **a, t_route **route, t_obj **obj);
-void find_best_opening(t_stack **x, t_route **route, t_obj **obj);
+void find_destination(t_stack **x, t_route **route, t_obj **obj);
 
  
 // sort

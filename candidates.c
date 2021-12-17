@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/17 18:07:16 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/17 23:04:37 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	find_closest_r(t_stack **a, t_route **route, t_obj **obj)
 	{
 		if ((*a)->index <= (*obj)->group_inc)
 		{
-			(*route)->ra = i; 
-			(*route)->ra_index = (*a)->index; 
+			(*route)->candidate_ra_position = (int) i; 
+			(*route)->candidate_ra_index = (*a)->index; 
 			break;
 		}
 		if (!(*a)->next)
@@ -43,8 +43,8 @@ static void	find_closest_rr(t_stack **a, t_route **route, t_obj **obj)
 	{
 		if ((*a)->index <= (*obj)->group_inc)
 		{
-			(*route)->rra = i; 
-			(*route)->rra_index = (*a)->index; 
+			(*route)->candidate_rra_position = (int) i; 
+			(*route)->candidate_rra_index = (*a)->index; 
 			break;
 		}
 		if (!(*a)->previous)
