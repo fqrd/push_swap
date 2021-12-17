@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/15 20:15:48 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/17 18:16:26 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ static t_obj	*init_obj(void)
 	obj->group_size = 0;
 	obj->group_inc = 0;
 	obj->pushed_inc = 0;
+	obj->highestb = 0; 
+	obj->lowestb = 0;
+
 	return (obj);
 }
 
@@ -47,58 +50,44 @@ static t_route	*init_route(void)
 	route->ra_index = -1;
 	route->rra = -1;
 	route->rra_index = -1;
-	route->rb = -1;
-	route->rrb = -1;
+	route->moves_b = -1;
 	route->rr = -1;
 	route->rrr = -1;
 	return (route);
 }
 
-static t_state	*init_state(void)
+static void high_low(t_stack **b, t_obj **obj)
 {
-	t_state *state;
+	size_t i;
 
-	state = malloc(sizeof(t_state) * 1);
-	if (!state)
-		return (NULL);
-	state->size = 0;
-	state->highest = 0; 
-	state->lowest = 0;
+	i = 0;
+	*b = lst_rewind(*b);
+	while (*b)
+	{
+		if (i == 0)
+		{
+			(*obj)->highestb = (*b)->index;
+			(*obj)->lowestb = (*b)->index;
+		}
+		else
+		{
+			if ((*b)->index > (*obj)->highestb)
+				(*obj)->highestb = (*b)->index;
+			if ((*b)->index < (*obj)->lowestb)
+				(*obj)->lowestb = (*b)->index;
+		}
+		if(!(*b)->next)
+			break;
+		*b = (*b)->next;
+		i++;
+	}
 }
 
 static void print_route(t_route **route, t_obj **obj)
 {
-	printf("ra: %ld/ rra: %ld/ rb: %ld/ rrb: %ld/ rr: %ld/ rrr: %ld/ group: %d\n", 
-		(*route)->ra, (*route)->rra, (*route)->rb, (*route)->rrb, (*route)->rr, (*route)->rrr, (*obj)->group_inc);
+	printf("ra: %ld/ raidx: %ld / rra: %ld/ rraidx: %ld/ moves_b: %ld/ rr: %ld/ rrr: %ld/ group: %d\n", 
+		(*route)->ra, (*route)->ra_index, (*route)->rra, (*route)->rra_index, (*route)->moves_b, (*route)->rr, (*route)->rrr, (*obj)->group_inc);
 }
-
-/*static size_t	find_highest(t_stack *x)
-{
-	size_t count;
-	size_t	i;
-	int		k;
-
-	i = 0;
-	k = 0;
-	count = 0;
-	x = lst_rewind(x);
-	while (x)
-	{
-		i++;
-		if (x->index > k)
-		{
-			count = i;
-			k = x->index;
-		}
-		if (!x->next)
-			break;
-		x = x->next;
-	}
-	x = lst_rewind(x);
-	// printf("Highest: %zu\n", count);
-	return (count);
-}
-*/
 
 /* static void over_and_out(t_stack **a, t_stack **b, t_obj **obj)
 {
@@ -151,6 +140,8 @@ static void	fill_obj(t_stack **a, t_stack **b, t_obj **obj)
 	(*obj)->firstb = lst_rewind(*b);
 	(*obj)->lastb = lst_forward(*b);
 
+	high_low(b, obj);
+	
 	(*obj)->group_size = 10;
 	(*obj)->pushed_inc = 0;
 	(*obj)->group_inc = (((*obj)->pushed_inc / (*obj)->group_size) + 1) * (*obj)->group_size;
@@ -159,15 +150,22 @@ static void	fill_obj(t_stack **a, t_stack **b, t_obj **obj)
 		printf("sizea: %zu / limita: %zu / firsta: %d / lasta: %d\n", 
 			(*obj)->sizea, (*obj)->limita, (*obj)->firsta->index, (*obj)->lasta->index);
 	if ((*obj)->sizeb > 0)
-		printf("sizeb: %zu / limitb: %zu / firstb: %d / lastb: %d\n", 
-			(*obj)->sizeb, (*obj)->limitb, (*obj)->firstb->index, (*obj)->lastb->index);
+		printf("sizeb: %zu / limitb: %zu / firstb: %d / lastb: %d / highest: %d/ lowest: %d\n", 
+			(*obj)->sizeb, (*obj)->limitb, (*obj)->firstb->index, (*obj)->lastb->index, (*obj)->highestb, (*obj)->lowestb);
 }
 
-static void	move_stacks(t_stack **a, t_stack **b, t_route **route)
+static void	move_stacks(t_stack **a, t_stack **b, t_route **route, t_obj **obj)
 {
 	size_t i;
 
 	i = 0;
+	if ((*route)->moves_b > 0)
+	{
+		if ((*route)->moves_b > (*obj)->limitb)
+		{
+			// consider rrb
+		}
+	}
 	if ((*route)->ra <= (*route)->rra && (*route)->ra > 0)
 	{
 		while (i++ < (*route)->ra)
@@ -180,108 +178,17 @@ static void	move_stacks(t_stack **a, t_stack **b, t_route **route)
 	}
 }
 
-static void	find_best_opening(t_stack **x, t_route **route, t_stack **obj)
-{
-	int index;
-	size_t best;
-	size_t i;
-	size_t position;
-
-	if ((*route)->ra <= (*route)->rra)
-		index = (*route)->ra_index;
-	else
-		index = (*route)->rra_index;
-	// if higher on stack. closest higher first, closest lower last
-	// if index is highest. lowest first.
-	// if index is lowest. highest first.
-
-	// looking for highest;
-	i = 0;
-	*x = lst_rewind(*x);
-	while (*x)
-	{
-		if (index - (*x)->index < best)
-		{
-			best = index - (*x)->index;
-			position = i;
-		}
-		if (!(*x)->next)
-			break;
-		*x = (*x)->next;
-	}
-
-	// looking for lowest
-	i = 0;
-	*x = lst_rewind(*x);
-	while (*x)
-	{
-		if (index - (*x)->index > best)
-		{
-			best = index - (*x)->index;
-			position = i;
-		}
-		if (!(*x)->next)
-			break;
-		*x = (*x)->next;
-	}
-}
-
-static void	find_closest_r(t_stack **x, t_route **route, t_obj **obj)
-{
-	size_t	i;
-
-	i = 0;
-	*x = lst_rewind(*x);
-	while (*x)
-	{
-		if ((*x)->index <= (*obj)->group_inc)
-		{
-			printf("ra: %ld\n", i);
-			(*route)->ra = i; 
-			(*route)->ra_index = (*x)->index; 
-			break;
-		}
-		if (!(*x)->next)
-			break;
-		*x = (*x)->next;
-		i++;
-	}
-}
-
-static void	find_closest_rr(t_stack **x, t_route **route, t_obj **obj)
-{
-	size_t	i;
-
-	i = 1;
-	*x = lst_forward(*x);
-	printf("x->index: %d\n", (*x)->index);
-	while (*x)
-	{
-		if ((*x)->index <= (*obj)->group_inc)
-		{
-			printf("rra: %ld\n", i);
-			(*route)->rra = i; 
-			(*route)->rra_index = (*x)->index; 
-			break;
-		}
-		if (!(*x)->previous)
-			break;
-		*x = (*x)->previous;
-		i++;
-	}
-}
-
-static void find_candidate(t_stack **x, t_route **route, t_obj **obj)
-{
-	find_closest_r(x, route, obj);
-	find_closest_rr(x, route, obj);
-}
-
-static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route, t_state **state_b)
+static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route)
 {
 	// int group;
 
+	display_stacks(*a, *b);
 	fill_obj(a, b, obj);
+
+	*a = lst_rewind(*a);
+	*b = lst_rewind(*b);
+
+
 	// group = (*obj)->group_size * (*obj)->group_inc;
 
 	if ((*obj)->sizea > 0)
@@ -295,10 +202,21 @@ static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route, t_
 		// find best opening *b
 		// best route to get there
 
-		find_best_opening(a, route, obj);
+		if ((*obj)->sizeb > 1)
+		{
+			printf("IF\n");
+			print_route(route, obj);
+			find_best_opening(b, route, obj);
 
+			// make moves
+		}
+		else
+		{
+			printf("ELSE\n");
+			print_route(route, obj);
+			sort_above(pb(a, b, 0), b, obj, route);
+		}
 
-		print_route(route, obj);
 		// move stacks
 		// move_stacks(a, b, route);
 		
@@ -317,22 +235,25 @@ static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route, t_
 	else
 	{
 		// go to highest *b
-		printf("SHOULD BE SORTED: RETURN TO B");
+		printf("SHOULD BE SORTED: RETURN TO B\n");
 		return (1);
 	}
     return (0);
 }
 
-void sort_above_entry(t_stack **a, t_stack **b)
+int sort_above_entry(t_stack **a, t_stack **b)
 {
 	t_obj *obj;
 	t_route *route;
-	t_state	*state_b;
 
 	obj = init_obj();
+	if (!obj)
+		return (0);
 	route = init_route();
-	state_b = init_state();
-	sort_above(a, b, &obj, &route, &state_b);
+	if (!route)
+		return (0);
+	sort_above(a, b, &obj, &route);
 	free (obj);
 	free (route);
+	return (1);
 }

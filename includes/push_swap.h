@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/15 20:09:50 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/17 18:03:36 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_obj
 	size_t	positionb;
 	size_t	actions;
 
+
+	int	highestb;
+	int	lowestb;
+
 	int	group_size;
 	int	group_inc;
 	int	pushed_inc;
@@ -49,22 +53,13 @@ typedef struct s_obj
 typedef	struct	s_route
 {
 	size_t	ra;
-	size_t ra_index;
+	size_t	ra_index;
 	size_t	rra;
-	size_t rra_index;
-	size_t	rb;
-	size_t	rrb;
+	size_t	rra_index;
+	size_t	moves_b;
 	size_t	rr;
 	size_t	rrr;
 }				t_route;
-
-
-typedef	struct	s_state
-{
-	size_t	highest;
-	size_t	lowest;
-	size_t	size;
-}				t_state;
 
 // list manipulations functions
 int		lst_clear(t_stack **lst, int val);
@@ -103,10 +98,15 @@ t_stack	**ss(t_stack **a, t_stack **b, int pass_b);
  * OPEN TO CHANGES
  */
  
+
+void find_candidate(t_stack **a, t_route **route, t_obj **obj);
+void find_best_opening(t_stack **x, t_route **route, t_obj **obj);
+
+ 
 // sort
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
-void	sort_above_entry(t_stack **a, t_stack **b);
+int		sort_above_entry(t_stack **a, t_stack **b);
 // int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
 
 // void	pre_sort(t_stack *lst, int len);
