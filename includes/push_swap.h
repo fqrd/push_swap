@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 00:09:22 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 11:59:37 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ typedef struct s_obj
 
 typedef	struct	s_route
 {
-	int candidate_ra_index;
-	int candidate_ra_position;
-	int candidate_ra_destination;
-	int candidate_ra_rb;
-	int candidate_ra_rrb;
+	int candidate_top_index;
+	int candidate_top_position;
+	int candidate_top_destination;
+	int candidate_top_rb;
+	int candidate_top_rrb;
 
-	int candidate_rra_index;
-	int candidate_rra_position;
-	int candidate_rra_destination;
-	int candidate_rra_rb;
-	int candidate_rra_rrb;
+	int candidate_btm_index;
+	int candidate_btm_position;
+	int candidate_btm_destination;
+	int candidate_btm_rb;
+	int candidate_btm_rrb;
 
 	int	rr;
 	int	rrr;

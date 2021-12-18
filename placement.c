@@ -6,80 +6,95 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 00:08:14 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:23:39 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-static	int	get_index_position(t_stack **lst, int index)
+static int	get_index_position(t_stack **b, int index)
 {
 	int i;
 
 	i = 0;
-	while (*lst)
+	printf("looking for: %d\n", index);
+	*b = lst_rewind(*b);
+	while (*b)
 	{
-		if ((*lst)->index == index)
+		printf("b->index: %d\n", (*b)->index);
+		if ((*b)->index == index)
+		{
+			printf("found: %d[%d]\n", index, i);
 			return (i);
-		if (!(*lst)->next);
+		}
+		if (!(*b)->next)
+		{
+			printf("break");
 			break;
-		*lst = (*lst)->next;
+		}
+		*b = (*b)->next;
+		i++;
 	}
 	return (-1);
 }
 
-static void get_opening(t_stack **b, int index, int *destination)
+static int get_opening(t_stack **b, int index)
 {
-	size_t i;
+	int i;
 	int difference;
 	int place;
 
+	printf("looking for: %d\n", index);
 	*b = lst_rewind(*b);
 	i = 0;
-	difference = 0;
+	difference = -1;
+	place = -1;
 	while (*b)
 	{
-		if ((*b)->index - index > 0 && (*b)->index - index < difference)
+		printf("b->index: %d / >0 && < diff: %d / diff: %d\n", (*b)->index, index - (*b)->index, difference);
+		if ((index - (*b)->index > 0 && index - (*b)->index < difference)
+			|| ((difference == -1 && index - (*b)->index > 0)))
 		{
-			*destination = (int) i;
-			difference = (*b)->index - index;
+			place = i;
+			difference = index - (*b)->index;
 		}
 		if (!(*b)->next)
 			break;
 		*b = (*b)->next;
 		i++;
 	}
+	return (place);
 }
 
-static void	find_opening(t_stack **b, int index, int *destination, t_obj **obj)
+static int	find_opening(t_stack **b, int index, t_obj **obj)
 {
 	if ((*obj)->sizeb > 0)
 	{
-		if (index > (*obj)->highestb)
-		{
-			// if index is highest. lowest first.
-			printf("[Lowest first][%d]\n", (*obj)->lowestb);
-			*destination = get_index_position(b, (*obj)->lowestb);
-		}
-		else if (index < (*obj)->lowestb)
+		// if (index > (*obj)->highestb)
+		// {
+		// 	// if index is highest. lowest first.
+		// 	printf("[Lowest first][%d]\n", (*obj)->lowestb);
+		// 	return (get_index_position(b, (*obj)->lowestb));
+		// }
+		if (index > (*obj)->highestb || index < (*obj)->lowestb)
 		{
 			// if index is lowest. highest first.
 			printf("[Highest first][%d]\n", (*obj)->highestb);
-			*destination = get_index_position(b, (*obj)->highestb);
+			return (get_index_position(b, (*obj)->highestb));
 		}
 		else
 		{
 			// if higher on stack. closest higher first, closest lower last 
 			printf("[Get opening moves]\n");
-			get_opening(b, index, destination);
+			return (get_opening(b, index));
 		}
 	}
 }
 
 void find_destination(t_stack **b, t_route **route, t_obj **obj)
 {
-	find_opening(b, (*route)->candidate_ra_index, &(*route)->candidate_ra_destination, obj);
-	find_opening(b, (*route)->candidate_rra_index, &(*route)->candidate_rra_destination, obj);
-	printf("DEBUG: sizeb: %ld / ra_destination: %d /rra_destination: %d\n", 
-		(*obj)->sizeb, (*route)->candidate_ra_destination, (*route)->candidate_rra_destination);
+	(*route)->candidate_top_destination = find_opening(b, (*route)->candidate_top_index, obj);
+	(*route)->candidate_btm_destination = find_opening(b, (*route)->candidate_btm_index, obj);
+	printf("DEBUG: sizeb: %ld / top dest: %d / btm dest: %d\n", 
+		(*obj)->sizeb, (*route)->candidate_top_destination, (*route)->candidate_btm_destination);
 }

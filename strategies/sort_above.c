@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/17 23:56:35 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:02:52 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ static t_route	*init_route(void)
 	route = malloc(sizeof(t_route) * 1);
 	if (!route)
 		return (NULL);
-	route->candidate_ra_destination = -1;
-	route->candidate_ra_index = -1;
-	route->candidate_ra_position = -1;
-	route->candidate_rra_destination = -1;
-	route->candidate_ra_rb = -1;
-	route->candidate_ra_rrb = -1;
-	route->candidate_rra_index = -1;
-	route->candidate_rra_position = -1;
-	route->candidate_rra_rb = -1;
-	route->candidate_rra_rrb = -1;
+	route->candidate_top_destination = -1;
+	route->candidate_top_index = -1;
+	route->candidate_top_position = -1;
+	route->candidate_btm_destination = -1;
+	route->candidate_top_rb = -1;
+	route->candidate_top_rrb = -1;
+	route->candidate_btm_index = -1;
+	route->candidate_btm_position = -1;
+	route->candidate_btm_rb = -1;
+	route->candidate_btm_rrb = -1;
 	route->rr = -1;
 	route->rrr = -1;
 	return (route);
@@ -90,8 +90,10 @@ static void high_low(t_stack **b, t_obj **obj)
 
 static void print_route(t_route **route, t_obj **obj)
 {
-	printf("ra: %d[%d] -> %d / rra: %d[%d] -> %d/ rr: %d/ rrr: %d/ group: %d\n", 
-		(*route)->candidate_ra_position, (*route)->candidate_ra_index, (*route)->candidate_ra_destination,(*route)->candidate_rra_position, (*route)->candidate_rra_index, (*route)->candidate_rra_destination, (*route)->rr, (*route)->rrr, (*obj)->group_inc);
+	printf("#print_route# ra: %d[%d] -> %d / rra: %d[%d] -> %d/ rr: %d/ rrr: %d/ group: %d\n", 
+		(*route)->candidate_top_position, (*route)->candidate_top_index, (*route)->candidate_top_destination,
+		(*route)->candidate_btm_position, (*route)->candidate_btm_index, (*route)->candidate_btm_destination,
+		(*route)->rr, (*route)->rrr, (*obj)->group_inc);
 }
 
 /* static void over_and_out(t_stack **a, t_stack **b, t_obj **obj)
@@ -151,12 +153,12 @@ static void	fill_obj(t_stack **a, t_stack **b, t_obj **obj)
 	(*obj)->pushed_inc = 0;
 	(*obj)->group_inc = (((*obj)->pushed_inc / (*obj)->group_size) + 1) * (*obj)->group_size;
 
-	if ((*obj)->sizea > 0)
-		printf("sizea: %zu / limita: %zu / firsta: %d / lasta: %d\n", 
-			(*obj)->sizea, (*obj)->limita, (*obj)->firsta->index, (*obj)->lasta->index);
-	if ((*obj)->sizeb > 0)
-		printf("sizeb: %zu / limitb: %zu / firstb: %d / lastb: %d / highest: %d/ lowest: %d\n", 
-			(*obj)->sizeb, (*obj)->limitb, (*obj)->firstb->index, (*obj)->lastb->index, (*obj)->highestb, (*obj)->lowestb);
+	// if ((*obj)->sizea > 0)
+	// 	printf("sizea: %zu / limita: %zu / firsta: %d / lasta: %d\n", 
+	// 		(*obj)->sizea, (*obj)->limita, (*obj)->firsta->index, (*obj)->lasta->index);
+	// if ((*obj)->sizeb > 0)
+	// 	printf("sizeb: %zu / limitb: %zu / firstb: %d / lastb: %d / highest: %d/ lowest: %d\n", 
+	// 		(*obj)->sizeb, (*obj)->limitb, (*obj)->firstb->index, (*obj)->lastb->index, (*obj)->highestb, (*obj)->lowestb);
 }
 
 /* static void	move_stacks(t_stack **a, t_stack **b, t_route **route, t_obj **obj)
@@ -186,47 +188,47 @@ static void	fill_obj(t_stack **a, t_stack **b, t_obj **obj)
 
 static void	find_route(t_stack **a, t_stack **b, t_route **route, t_obj **obj)
 {
-	(*route)->candidate_ra_rb = (*route)->candidate_ra_destination;
-	(*route)->candidate_ra_rrb = ((*obj)->sizeb - (*route)->candidate_ra_destination);
-	(*route)->candidate_rra_rb = (*route)->candidate_rra_destination;
-	(*route)->candidate_rra_rrb = ((*obj)->sizeb - (*route)->candidate_rra_destination);
+	(*route)->candidate_top_rb = (*route)->candidate_top_destination;
+	(*route)->candidate_top_rrb = ((*obj)->sizeb - (*route)->candidate_top_destination);
+	(*route)->candidate_btm_rb = (*route)->candidate_btm_destination;
+	(*route)->candidate_btm_rrb = ((*obj)->sizeb - (*route)->candidate_btm_destination);
 
 	printf("\n*********\n");
-	if ((*route)->candidate_ra_position < (*route)->candidate_ra_rb)
+	if ((*route)->candidate_top_position < (*route)->candidate_top_rb)
 	{
-		(*route)->rr = (*route)->candidate_ra_rb - ((*route)->candidate_ra_rb - (*route)->candidate_ra_position);
-		printf("fastest 1? rr: %d\n", (*route)->candidate_ra_rb);
+		(*route)->rr = (*route)->candidate_top_rb - ((*route)->candidate_top_rb - (*route)->candidate_top_position);
+		printf("fastest 1? rr + ra: %d\n", (*route)->candidate_top_rb);
 	}
 	else
 	{
-		(*route)->rr = (*route)->candidate_ra_position - ((*route)->candidate_ra_position - (*route)->candidate_ra_rb);
-		printf("fastest 2? rr: %d\n", (*route)->candidate_ra_position);
+		(*route)->rr = (*route)->candidate_top_position - ((*route)->candidate_top_position - (*route)->candidate_top_rb);
+		printf("fastest 2? rr + rb: %d\n", (*route)->candidate_top_position);
 	}
 
-	if ((*route)->candidate_rra_position < (*route)->candidate_rra_rrb)
+	if ((*route)->candidate_btm_position < (*route)->candidate_btm_rrb)
 	{
-		(*route)->rrr = (*route)->candidate_rra_rrb - ((*route)->candidate_rra_rrb - (*route)->candidate_rra_position);
-		printf("fastest 1? rrr: %d\n", (*route)->candidate_rra_rrb);
+		(*route)->rrr = (*route)->candidate_btm_rrb - ((*route)->candidate_btm_rrb - (*route)->candidate_btm_position);
+		printf("fastest 1? rrr + rra: %d\n", (*route)->candidate_btm_rrb);
 	}
 	else
 	{
-		(*route)->rrr = (*route)->candidate_rra_position - ((*route)->candidate_rra_position - (*route)->candidate_rra_rrb);
-		printf("fastest 2? rrr: %d\n", (*route)->candidate_rra_rrb);
+		(*route)->rrr = (*route)->candidate_btm_position - ((*route)->candidate_btm_position - (*route)->candidate_btm_rrb);
+		printf("fastest 2? rrr + rrb: %d\n", (*route)->candidate_btm_rrb);
 	}
 
 
 	printf("\n*********\n");
-	printf("candidate ra index: %d\n",(*route)->candidate_ra_index);
-	printf("candidate ra destination: %d\n",(*route)->candidate_ra_destination);
-	printf("candidate ra position: %d\n",(*route)->candidate_ra_position);
-	printf("candidate ra rb: %d\n",(*route)->candidate_ra_rb);
-	printf("candidate ra rrb: %d\n",(*route)->candidate_ra_rrb);
+	printf("candidate top index: %d\n",(*route)->candidate_top_index);
+	printf("candidate top destination: %d\n",(*route)->candidate_top_destination);
+	printf("candidate top position: %d\n",(*route)->candidate_top_position);
+	printf("candidate top rb: %d\n",(*route)->candidate_top_rb);
+	printf("candidate top rrb: %d\n",(*route)->candidate_top_rrb);
 	printf("\n*********\n");
-	printf("candidate rra index: %d\n",(*route)->candidate_rra_index);
-	printf("candidate rra destination: %d\n",(*route)->candidate_rra_destination);
-	printf("candidate rra position: %d\n",(*route)->candidate_rra_position);
-	printf("candidate rra rb: %d\n",(*route)->candidate_rra_rb);
-	printf("candidate rra rrb: %d\n",(*route)->candidate_rra_rrb);
+	printf("candidate btm index: %d\n",(*route)->candidate_btm_index);
+	printf("candidate btm destination: %d\n",(*route)->candidate_btm_destination);
+	printf("candidate btm position: %d\n",(*route)->candidate_btm_position);
+	printf("candidate btm rb: %d\n",(*route)->candidate_btm_rb);
+	printf("candidate btm rrb: %d\n",(*route)->candidate_btm_rrb);
 	printf("\n*********\n");
 	printf("rr: %d\n", (*route)->rr);
 	printf("rrr: %d\n", (*route)->rrr);
@@ -238,7 +240,6 @@ static void	find_route(t_stack **a, t_stack **b, t_route **route, t_obj **obj)
 static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route)
 {
 	// int group;
-
 	display_stacks(*a, *b);
 	fill_obj(a, b, obj);
 
@@ -252,7 +253,9 @@ static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route)
 	{
 		// find candidate
 		find_candidate(a, route, obj);
-		printf("candidates: ra: %d[%d] / rra: %d[%d]\n", (*route)->candidate_ra_position, (*route)->candidate_ra_index, (*route)->candidate_rra_position, (*route)->candidate_rra_index);
+		printf("candidates: ra: %d[%d] / rra: %d[%d]\n", 
+			(*route)->candidate_top_position, (*route)->candidate_top_index, 
+			(*route)->candidate_btm_position, (*route)->candidate_btm_index);
 
 		// best route to get candidate on top of stack a
 		// #don't move a yet, wait to know where the a number goes in be
@@ -264,6 +267,7 @@ static int	sort_above(t_stack **a, t_stack **b, t_obj **obj, t_route **route)
 		{
 			printf("IF\n");
 			find_destination(b, route, obj);
+
 			// get best route first !
 			print_route(route, obj);
 			find_route(a, b, route, obj);
