@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 15:05:16 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:42:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	print_action(char *str)
 {
-	ft_printf("%s\n", str);
+	// static size_t i = 0;
+	// i++;
+	// printf("%s [%ld]\n", str, i);
+	printf("%s\n", str);
 }
 
 void	sort(size_t argc, t_stack **a, t_stack **b)
@@ -46,7 +49,7 @@ static int	push_swap(int argc, char *argv[])
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
 	sort((size_t) argc - 1, &a, &b);
-	display_stacks(a, b);
+	// display_stacks(a, b);
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 

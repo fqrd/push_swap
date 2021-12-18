@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 17:27:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:41:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void	context_reset(t_stack **a, t_stack **b, t_context **context)
 	(*context)->firstb = lst_rewind(*b);
 	(*context)->lastb = lst_forward(*b);
 	high_low(b, context);
-	(*context)->group_size = 10;
-	(*context)->pushed_inc = 0;
+	(*context)->group_size = 50;
 	(*context)->group_inc = (((*context)->pushed_inc / (*context)->group_size) + 1) * (*context)->group_size;
 
 	// if ((*context)->sizea > 0)

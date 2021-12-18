@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 19:37:45 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 22:50:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,11 @@ void	candidate_reset(t_candidate **candidate);
 void	find_candidate(t_stack **a, t_context **context, t_candidate **top, t_candidate **btm);
 
 // destination
+int	get_index_position(t_stack **b, int index);
 void find_destination(t_stack **b, t_candidate **top, t_candidate **btm, t_context **context);
 
 // route
-int	find_route(t_context **context, t_candidate **top, t_candidate **btm);
+int	find_and_apply_route(t_stack **a, t_stack **b, t_context **context, t_candidate **top, t_candidate **btm);
 
 // context
 t_context	*init_context(void);

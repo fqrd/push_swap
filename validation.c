@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/15 19:12:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:06:07 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ int	duplicates_check(t_stack *lst)
 		{	
 			p = p->next;
 			if (p->content == lst->content)
+			{
+				printf("DUPP: %d\n", p->content);
 				return (0);
+			}
 		}
 		lst = lst->next;
 	}

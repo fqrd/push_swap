@@ -6,15 +6,34 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 18:57:35 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:42:03 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+static void	back_to_a(t_stack **a, t_stack **b, t_context **context)
+{
+	int position;
+
+	position = get_index_position(b, (*context)->highestb);
+	if (position > (*context)->limitb)
+	{
+		while ((*context)->sizeb - position++ > 0)
+			rrb(b);
+	}
+	else
+	{
+		while (position-- > 0)
+			rb(b);
+	}
+	while ((*context)->sizeb-- > 0)
+		pa(a, b, 0);		
+}
+
 static int	sort_above(t_stack **a, t_stack **b, t_context **context, t_candidate **top, t_candidate **btm)
 {
-	display_stacks(*a, *b);
+	// display_stacks(*a, *b);
 	context_reset(a, b, context);
 	candidate_reset(top);
 	candidate_reset(btm);
@@ -25,24 +44,25 @@ static int	sort_above(t_stack **a, t_stack **b, t_context **context, t_candidate
 	{
 		find_candidate(a, context, top, btm);
 		find_destination(b, top, btm, context);
-		printf("[TOP] index: %d / nra: %d / nrra: %d / nrb: %d / nrrb: %d / position: %d\n", (*top)->index, (*top)->nra, (*top)->nrra, (*top)->nrb, (*top)->nrrb, (*top)->position);
-		printf("[BTM] index: %d / nra: %d / nrra: %d / nrb: %d / nrrb: %d / position: %d\n", (*btm)->index, (*btm)->nra, (*btm)->nrra, (*btm)->nrb, (*btm)->nrrb, (*btm)->position);
+		// printf("[TOP] index: %d / nra: %d / nrra: %d / nrb: %d / nrrb: %d / position: %d\n", (*top)->index, (*top)->nra, (*top)->nrra, (*top)->nrb, (*top)->nrrb, (*top)->position);
+		// printf("[BTM] index: %d / nra: %d / nrra: %d / nrb: %d / nrrb: %d / position: %d\n", (*btm)->index, (*btm)->nra, (*btm)->nrra, (*btm)->nrb, (*btm)->nrrb, (*btm)->position);
 		if ((*context)->sizeb > 1)
 		{
-			find_route(context, top, btm);
+			find_and_apply_route(a, b, context, top, btm);
+			(*context)->pushed_inc++;
 			sort_above(pb(a, b, 0), b, context, top, btm);
 		}
 		else
 		{
-			printf("[sizeb <= 1]\n");
-			find_route(context, top, btm);
+			find_and_apply_route(a, b, context, top, btm);
+			(*context)->pushed_inc++;
 			sort_above(pb(a, b, 0), b, context, top, btm);
 		}
 	}
 	else
 	{
 		// go to highest *b
-		printf("SHOULD BE SORTED: RETURN TO B\n");
+		back_to_a(a, b, context);
 		return (1);
 	}
     return (0);
