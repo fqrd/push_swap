@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 12:23:39 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 14:12:20 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,21 @@ static int get_opening(t_stack **b, int index)
 	return (place);
 }
 
-static int	find_opening(t_stack **b, int index, t_obj **obj)
+static int	find_opening(t_stack **b, int index, t_context **context)
 {
-	if ((*obj)->sizeb > 0)
+	if ((*context)->sizeb > 0)
 	{
-		// if (index > (*obj)->highestb)
+		// if (index > (*context)->highestb)
 		// {
 		// 	// if index is highest. lowest first.
-		// 	printf("[Lowest first][%d]\n", (*obj)->lowestb);
-		// 	return (get_index_position(b, (*obj)->lowestb));
+		// 	printf("[Lowest first][%d]\n", (*context)->lowestb);
+		// 	return (get_index_position(b, (*context)->lowestb));
 		// }
-		if (index > (*obj)->highestb || index < (*obj)->lowestb)
+		if (index > (*context)->highestb || index < (*context)->lowestb)
 		{
 			// if index is lowest. highest first.
-			printf("[Highest first][%d]\n", (*obj)->highestb);
-			return (get_index_position(b, (*obj)->highestb));
+			printf("[Highest first][%d]\n", (*context)->highestb);
+			return (get_index_position(b, (*context)->highestb));
 		}
 		else
 		{
@@ -91,10 +91,7 @@ static int	find_opening(t_stack **b, int index, t_obj **obj)
 	}
 }
 
-void find_destination(t_stack **b, t_route **route, t_obj **obj)
+void find_destination(t_stack **b, t_candidate **candidate, t_context **context)
 {
-	(*route)->candidate_top_destination = find_opening(b, (*route)->candidate_top_index, obj);
-	(*route)->candidate_btm_destination = find_opening(b, (*route)->candidate_btm_index, obj);
-	printf("DEBUG: sizeb: %ld / top dest: %d / btm dest: %d\n", 
-		(*obj)->sizeb, (*route)->candidate_top_destination, (*route)->candidate_btm_destination);
+	(*candidate)->destination = find_opening(b, (*candidate)->index, context);
 }

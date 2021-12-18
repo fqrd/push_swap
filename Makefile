@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/17 16:07:29 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/18 15:04:42 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,10 @@ SRCS = \
 	preparation.c					\
 	push_swap.c						\
 	validation.c					\
-	placement.c						\
+	context.c						\
 	candidates.c					\
+	destination.c					\
+	routes.c						\
 
 OBJS = $(SRCS:.c=.o)
 

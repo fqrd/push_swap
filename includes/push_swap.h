@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 11:59:37 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 15:53:44 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }					t_stack;
 
-typedef struct s_obj
+typedef struct s_context
 {
 	size_t	limita;
 	size_t	limitb;
@@ -35,38 +35,41 @@ typedef struct s_obj
 	size_t	positiona;
 	size_t	positionb;
 	size_t	actions;
-
-
 	int	highestb;
 	int	lowestb;
-
 	int	group_size;
 	int	group_inc;
 	int	pushed_inc;
-
 	struct	s_stack	*firsta;
 	struct	s_stack	*lasta;
 	struct	s_stack	*firstb;
 	struct	s_stack	*lastb;
-}					t_obj;
+}					t_context;
 
 typedef	struct	s_route
 {
-	int candidate_top_index;
-	int candidate_top_position;
-	int candidate_top_destination;
-	int candidate_top_rb;
-	int candidate_top_rrb;
-
-	int candidate_btm_index;
-	int candidate_btm_position;
-	int candidate_btm_destination;
-	int candidate_btm_rb;
-	int candidate_btm_rrb;
-
+	int ra;
+	int rra;
+	int rb;
+	int rrb;
 	int	rr;
 	int	rrr;
+	int nrx;
+	int nrr;
+	int nrrx;
+	int nrrr;
 }				t_route;
+
+typedef struct	s_candidate
+{
+	int index;
+	int position;
+	int nra;
+	int nrra;
+	int destination;
+	int nrb;
+	int nrrb;
+}				t_candidate;
 
 // list manipulations functions
 int		lst_clear(t_stack **lst, int val);
@@ -106,20 +109,31 @@ t_stack	**ss(t_stack **a, t_stack **b, int pass_b);
  */
  
 
-void find_candidate(t_stack **a, t_route **route, t_obj **obj);
-void find_destination(t_stack **x, t_route **route, t_obj **obj);
+// candidates
+t_candidate	*init_candidate(void);
+void	candidate_reset(t_candidate **candidate);
+void	find_candidate(t_stack **a, t_context **context, t_candidate **top, t_candidate **btm);
 
- 
+// destination
+void find_destination(t_stack **b, t_candidate **candidate, t_context **context);
+
+// route
+int	find_route(t_stack **a, t_stack **b, t_context **context, t_candidate **top, t_candidate **btm);
+
+// context
+t_context	*init_context(void);
+void	context_reset(t_stack **a, t_stack **b, t_context **context);
+
 // sort
 int		sort_three(t_stack **a);
 int		sort_five(t_stack **a, t_stack **b);
 int		sort_above_entry(t_stack **a, t_stack **b);
-// int		sort_above(t_stack **a, t_stack **b, t_obj **obj);
+// int		sort_above(t_stack **a, t_stack **b, t_conext **context);
 
 // void	pre_sort(t_stack *lst, int len);
 int		lst_issorted(t_stack *lst, int descending);
-int		lst_is_kinda_sorted_a(t_stack *a, t_obj *obj);
-int		lst_is_kinda_sorted_b(t_stack *b, t_obj *obj);
+// int		lst_is_kinda_sorted_a(t_stack *a, t_conext *context);
+// int		lst_is_kinda_sorted_b(t_stack *b, t_conext *context);
 
 // debug
 void	display_stacks(t_stack *a, t_stack *b);
