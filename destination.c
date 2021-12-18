@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   placement.c                                        :+:      :+:    :+:   */
+/*   destination.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 14:12:20 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 18:59:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int	get_index_position(t_stack **b, int index)
 	*b = lst_rewind(*b);
 	while (*b)
 	{
-		printf("b->index: %d\n", (*b)->index);
 		if ((*b)->index == index)
 		{
 			printf("found: %d[%d]\n", index, i);
@@ -51,7 +50,6 @@ static int get_opening(t_stack **b, int index)
 	place = -1;
 	while (*b)
 	{
-		printf("b->index: %d / >0 && < diff: %d / diff: %d\n", (*b)->index, index - (*b)->index, difference);
 		if ((index - (*b)->index > 0 && index - (*b)->index < difference)
 			|| ((difference == -1 && index - (*b)->index > 0)))
 		{
@@ -66,32 +64,32 @@ static int get_opening(t_stack **b, int index)
 	return (place);
 }
 
-static int	find_opening(t_stack **b, int index, t_context **context)
+static void	find_opening(t_stack **b, t_candidate **candidate, t_context **context)
 {
+	int result;
+
 	if ((*context)->sizeb > 0)
 	{
-		// if (index > (*context)->highestb)
-		// {
-		// 	// if index is highest. lowest first.
-		// 	printf("[Lowest first][%d]\n", (*context)->lowestb);
-		// 	return (get_index_position(b, (*context)->lowestb));
-		// }
-		if (index > (*context)->highestb || index < (*context)->lowestb)
+		if ((*candidate)->index > (*context)->highestb || (*candidate)->index < (*context)->lowestb)
 		{
 			// if index is lowest. highest first.
 			printf("[Highest first][%d]\n", (*context)->highestb);
-			return (get_index_position(b, (*context)->highestb));
+			(*candidate)->destination = get_index_position(b, (*context)->highestb);
 		}
 		else
 		{
 			// if higher on stack. closest higher first, closest lower last 
 			printf("[Get opening moves]\n");
-			return (get_opening(b, index));
+			(*candidate)->destination = get_opening(b, (*candidate)->index);
 		}
 	}
+	(*candidate)->nrb = (*candidate)->destination; 
+	(*candidate)->nrrb = (*context)->sizeb - (*candidate)->destination;
 }
 
-void find_destination(t_stack **b, t_candidate **candidate, t_context **context)
+void find_destination(t_stack **b, t_candidate **top,  t_candidate **btm, t_context **context)
 {
-	(*candidate)->destination = find_opening(b, (*candidate)->index, context);
+	find_opening(b, top, context);
+	find_opening(b, btm, context);
+	printf("destination top: %d / btm: %d\n", (*top)->destination, (*btm)->destination);
 }

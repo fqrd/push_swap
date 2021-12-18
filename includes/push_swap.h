@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 15:53:44 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 19:37:45 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,25 @@ typedef struct s_context
 	struct	s_stack	*lasta;
 	struct	s_stack	*firstb;
 	struct	s_stack	*lastb;
-}					t_context;
-
-typedef	struct	s_route
-{
 	int ra;
 	int rra;
 	int rb;
 	int rrb;
 	int	rr;
 	int	rrr;
-	int nrx;
-	int nrr;
-	int nrrx;
-	int nrrr;
+}					t_context;
+
+typedef	struct	s_route
+{
+	int operations;
+	int ra;
+	int rra;
+	int rb;
+	int rrb;
+	int rr;
+	int rrr;
+	struct s_route *next;
+	struct s_route *previous;
 }				t_route;
 
 typedef struct	s_candidate
@@ -115,10 +120,10 @@ void	candidate_reset(t_candidate **candidate);
 void	find_candidate(t_stack **a, t_context **context, t_candidate **top, t_candidate **btm);
 
 // destination
-void find_destination(t_stack **b, t_candidate **candidate, t_context **context);
+void find_destination(t_stack **b, t_candidate **top, t_candidate **btm, t_context **context);
 
 // route
-int	find_route(t_stack **a, t_stack **b, t_context **context, t_candidate **top, t_candidate **btm);
+int	find_route(t_context **context, t_candidate **top, t_candidate **btm);
 
 // context
 t_context	*init_context(void);

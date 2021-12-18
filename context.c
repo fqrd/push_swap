@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 15:59:51 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 17:27:38 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ t_context	*init_context(void)
 	context->pushed_inc = 0;
 	context->highestb = 0; 
 	context->lowestb = 0;
-
+	context->ra = 0;
+	context->rra = 0;
+	context->rb = 0;
+	context->rrb = 0;
+	context->rr = 0;
+	context->rrr = 0;
 	return (context);
 }
 
