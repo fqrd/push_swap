@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 14:08:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:48:16 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,58 +86,3 @@ int	lst_issorted(t_stack *lst, int descending)
 	}
 	return (1);
 }
-
-/*
-int	lst_is_kinda_sorted_a(t_stack *a, t_obj *obj)
-{
-	int flag;
-
-	flag = 0;
-	a = lst_rewind(a);
-	while (a)
-	{
-		if (a->next && a->index >= a->next->index)
-		{
-			if (flag)
-				return (0);
-			else
-			{
-				if (obj->lasta->index >= obj->firsta->index)
-					return (0);
-				flag++;
-			}
-		}
-		if (!a->next)
-			break ;
-		a = a->next;
-	}
-	return (1);
-}
-
-int	lst_is_kinda_sorted_b(t_stack *b, t_obj *obj)
-{
-	int flag;
-
-	flag = 0;
-	b = lst_rewind(b);
-	while (b)
-	{
-		if (b->next && b->index <= b->next->index)
-		{
-			if (flag)
-				return (0);
-			else
-			{
-				if (obj->lastb->index <= obj->firstb->index)
-					return (0);
-				flag++;
-			}
-		}
-		if (!b->next)
-			break ;
-		b = b->next;
-	}
-	return (1);
-}
-*/
-

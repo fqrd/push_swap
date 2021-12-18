@@ -6,34 +6,34 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 23:41:02 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 00:19:28 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
+// context->limita = 0;
+// context->positiona = 0;
+// context->positionb = 0;
+// context->actions = 0;
+// context->firsta = NULL;
+// context->lasta = NULL;
+// context->firstb = NULL;
+// context->lastb = NULL;
 t_context	*init_context(void)
 {
-	t_context *context;
+	t_context	*context;
 
 	context = malloc(sizeof(t_context) * 1);
 	if (!context)
 		return (NULL);
-	context->limita = 0;
 	context->limitb = 0;
 	context->sizea = 0;
 	context->sizeb = 0;
-	context->positiona = 0;
-	context->positionb = 0;
-	context->actions = 0;
-	context->firsta = NULL;
-	context->lasta = NULL;
-	context->firstb = NULL;
-	context->lastb = NULL;
 	context->group_size = 0;
 	context->group_inc = 0;
 	context->pushed_inc = 0;
-	context->highestb = 0; 
+	context->highestb = 0;
 	context->lowestb = 0;
 	context->ra = 0;
 	context->rra = 0;
@@ -44,9 +44,9 @@ t_context	*init_context(void)
 	return (context);
 }
 
-static void high_low(t_stack **b, t_context **context)
+static void	high_low(t_stack **b, t_context **context)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	*b = lst_rewind(*b);
@@ -64,8 +64,8 @@ static void high_low(t_stack **b, t_context **context)
 			if ((*b)->index < (*context)->lowestb)
 				(*context)->lowestb = (*b)->index;
 		}
-		if(!(*b)->next)
-			break;
+		if (!(*b)->next)
+			break ;
 		*b = (*b)->next;
 		i++;
 	}
@@ -83,12 +83,6 @@ void	context_reset(t_stack **a, t_stack **b, t_context **context)
 	(*context)->lastb = lst_forward(*b);
 	high_low(b, context);
 	(*context)->group_size = 50;
-	(*context)->group_inc = (((*context)->pushed_inc / (*context)->group_size) + 1) * (*context)->group_size;
-
-	// if ((*context)->sizea > 0)
-	// 	printf("sizea: %zu / limita: %zu / firsta: %d / lasta: %d\n", 
-	// 		(*context)->sizea, (*context)->limita, (*context)->firsta->index, (*context)->lasta->index);
-	// if ((*context)->sizeb > 0)
-	// 	printf("sizeb: %zu / limitb: %zu / firstb: %d / lastb: %d / highest: %d/ lowest: %d\n", 
-	// 		(*context)->sizeb, (*context)->limitb, (*context)->firstb->index, (*context)->lastb->index, (*context)->highestb, (*context)->lowestb);
+	(*context)->group_inc = (((*context)->pushed_inc / \
+		(*context)->group_size) + 1) * (*context)->group_size;
 }

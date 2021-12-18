@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/15 19:19:29 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/18 23:48:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	lst_clear(t_stack **lst, int val)
 		while (*lst != NULL)
 		{
 			if (!(*lst)->previous)
-				break;
+				break ;
 			pre = (*lst)->previous;
 			lst_delete(lst);
 			*lst = pre;
@@ -74,7 +74,6 @@ void	lst_delete(t_stack **lst)
 	{
 		if ((*lst)->next)
 			(*lst)->next->previous = (*lst)->previous;
-		
 		if ((*lst)->previous)
 			(*lst)->previous->next = (*lst)->next;
 		(*lst)->next = NULL;

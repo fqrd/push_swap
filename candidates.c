@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 16:00:19 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 00:11:05 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_candidate	*init_candidate(void)
 {
-	t_candidate *candidate;
+	t_candidate	*candidate;
 
 	candidate = malloc(sizeof(t_candidate) * 1);
 	if (!candidate)
@@ -32,7 +32,8 @@ void	candidate_reset(t_candidate **candidate)
 	(*candidate)->nrb = 0;
 }
 
-static void	find_closest_r(t_stack **a, t_context **context, t_candidate **candidate)
+static void	find_closest_r(t_stack **a, t_context **context,
+	t_candidate **candidate)
 {
 	size_t	i;
 
@@ -42,20 +43,21 @@ static void	find_closest_r(t_stack **a, t_context **context, t_candidate **candi
 	{
 		if ((*a)->index <= (*context)->group_inc)
 		{
-			(*candidate)->index = (*a)->index; 
+			(*candidate)->index = (*a)->index;
 			(*candidate)->position = (int) i;
-			(*candidate)->nra = (*candidate)->position; 
-			(*candidate)->nrra = (int) ((*context)->sizea - i);
-			break;
+			(*candidate)->nra = (*candidate)->position;
+			(*candidate)->nrra = (int)((*context)->sizea - i);
+			break ;
 		}
 		if (!(*a)->next)
-			break;
+			break ;
 		*a = (*a)->next;
 		i++;
 	}
 }
 
-static void	find_closest_rr(t_stack **a, t_context **context, t_candidate **candidate)
+static void	find_closest_rr(t_stack **a, t_context **context,
+	t_candidate **candidate)
 {
 	size_t	i;
 
@@ -65,20 +67,21 @@ static void	find_closest_rr(t_stack **a, t_context **context, t_candidate **cand
 	{
 		if ((*a)->index <= (*context)->group_inc)
 		{
-			(*candidate)->index = (*a)->index; 
-			(*candidate)->position = (int) ((*context)->sizea - i) - 1;
+			(*candidate)->index = (*a)->index;
+			(*candidate)->position = (int)((*context)->sizea - i) - 1;
 			(*candidate)->nra = (*candidate)->position;
-			(*candidate)->nrra = (int) (i + 1);
-			break;
+			(*candidate)->nrra = (int)(i + 1);
+			break ;
 		}
 		if (!(*a)->previous)
-			break;
+			break ;
 		*a = (*a)->previous;
 		i++;
 	}
 }
 
-void find_candidate(t_stack **a, t_context **context, t_candidate **top, t_candidate **btm)
+void	find_candidate(t_stack **a, t_context **context,
+	t_candidate **top, t_candidate **btm)
 {
 	find_closest_r(a, context, top);
 	find_closest_rr(a, context, btm);

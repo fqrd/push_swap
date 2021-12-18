@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:52:01 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 22:49:07 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 00:14:04 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_route	*init_route(t_route *previous)
 {
-	t_route *route;
+	t_route	*route;
 
 	route = malloc(sizeof(t_route) * 1);
 	if (!route)
@@ -47,7 +47,7 @@ static t_route	*route_rewind(t_route *lst)
 	return (lst);
 }
 
-static void count_moves(t_route **route)
+static void	count_moves(t_route **route)
 {
 	if ((*route)->ra > -1)
 		(*route)->operations += (*route)->ra;
@@ -63,7 +63,7 @@ static void count_moves(t_route **route)
 		(*route)->operations += (*route)->rrr;
 }
 
-static void double_moves(t_candidate **candidate, t_route **route)
+static void	double_moves(t_candidate **candidate, t_route **route)
 {
 	if ((*route)->ra > -1 && (*route)->rb > -1 && (*route)->ra <= (*route)->rb)
 	{
@@ -77,13 +77,15 @@ static void double_moves(t_candidate **candidate, t_route **route)
 		(*route)->ra -= (*route)->rb;
 		(*route)->rb = 0;
 	}
-	if ((*route)->rra > -1 && (*route)->rrb > -1 && (*route)->rra <= (*route)->rrb)
+	if ((*route)->rra > -1 && (*route)->rrb > -1
+		&& (*route)->rra <= (*route)->rrb)
 	{
 		(*route)->rrr = (*route)->rra;
 		(*route)->rrb -= (*route)->rra;
 		(*route)->rra = 0;
 	}
-	if ((*route)->rra > -1 && (*route)->rrb > -1 && (*route)->rra > (*route)->rrb)
+	if ((*route)->rra > -1 && (*route)->rrb > -1
+		&& (*route)->rra > (*route)->rrb)
 	{
 		(*route)->rrr = (*route)->rrb;
 		(*route)->rra -= (*route)->rrb;
@@ -120,8 +122,8 @@ static void	map_routes(t_candidate **candidate, t_route **route, int i, int j)
 
 static t_route	*best_route(t_route **route)
 {
-	int best;
-	t_route *p;
+	int		best;
+	t_route	*p;
 
 	*route = route_rewind(*route);
 	while (*route)
@@ -140,24 +142,14 @@ static t_route	*best_route(t_route **route)
 			}
 		}
 		if (!(*route))
-			break;
+			break ;
 		*route = (*route)->next;
 	}
 	return (p);
 }
 
-static void apply_route(t_route *route, t_stack **a, t_stack **b)
+static void	apply_route(t_route *route, t_stack **a, t_stack **b)
 {
-	// printf("BEST ROUTE: op: %d / ra: %d / rra: %d / rb: %d / rrb: %d / rr: %d / rrr: %d\n",
-	// 	route->operations,
-	// 	route->ra,
-	// 	route->rra,
-	// 	route->rb,
-	// 	route->rrb,
-	// 	route->rr,
-	// 	route->rrr
-	// 	);
-
 	while (route->rr-- > 0)
 		rr(a, b, 0);
 	while (route->rrr-- > 0)
@@ -172,31 +164,13 @@ static void apply_route(t_route *route, t_stack **a, t_stack **b)
 		rrb(b);
 }
 
-int	find_and_apply_route(t_stack **a, t_stack **b, t_context **context, t_candidate **top, t_candidate **btm)
+int	find_and_apply_route(t_stack **a, t_stack **b, t_candidate **top,
+	t_candidate **btm)
 {
-	t_route *route;
+	t_route	*route;
 
 	route = NULL;
 	map_routes(top, &route, -1, -1);
 	map_routes(btm, &route, -1, -1);
 	apply_route(best_route(&route), a, b);
-
-
-	// route = route_rewind(route);
-	// while (route)
-	// {
-	// 	printf("op: %d / ra: %d / rra: %d / rb: %d / rrb: %d / rr: %d / rrr: %d\n",
-	// 	route->operations,
-	// 	route->ra,
-	// 	route->rra,
-	// 	route->rb,
-	// 	route->rrb,
-	// 	route->rr,
-	// 	route->rrr
-	// 	);
-	// 	if (!route->next)
-	// 		break;
-	// 	route = route->next;
-	// }
-	// return (1);
 }
