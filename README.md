@@ -1,5 +1,19 @@
 ## Candidates
 
+candidate 1 -> 2 -> 3 -> 4
+
+candidate 
+	index
+	position
+	nra
+	nrra
+	destination
+	nrb
+	nrrb
+
+
+
+
 get closest index in the searched group from top (ra)
 and from the bottom (rra)
 

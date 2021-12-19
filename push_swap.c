@@ -6,18 +6,18 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 00:07:20 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 13:12:52 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-// static size_t i = 0;
-// i++;
-// printf("%s [%ld]\n", str, i);
 void	print_action(char *str)
 {
-	printf("%s\n", str);
+
+	static size_t i = 0;
+	i++;
+	printf("%s [%ld]\n", str, i);
+	// printf("%s\n", str);
 }
 
 void	sort(size_t argc, t_stack **a, t_stack **b)
