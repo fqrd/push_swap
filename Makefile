@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/18 18:34:31 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/19 16:32:01 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,13 @@ SRCS = \
 	$(MANDATORY_SRC)switchy.c		\
 	list_utils.c					\
 	lists.c							\
-	debug.c							\
 	preparation.c					\
 	push_swap.c						\
 	validation.c					\
 	context.c						\
 	candidates.c					\
 	destination.c					\
-	radar.c						\
+	radar.c							\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -57,11 +56,3 @@ cleanlibft:
 
 makelibft: 
 	cd $(LIBS_PATH) && $(MAKE)
-
-
-# EXAMPLE CHECKER USAGE
-# $>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
-# 6
-# $>ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
-# OK
-# $>

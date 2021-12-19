@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 15:31:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 16:15:51 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,32 @@ static void	high_low(t_stack **b, t_context **context)
 	}
 }
 
+static int	get_group_size(size_t sizea)
+{
+	int group;
+
+	if (sizea > 500)
+		group = 50;
+	if (sizea <= 500)
+		group = 42;
+	if (sizea <= 400)
+		group = 37;
+	if (sizea <= 200)
+		group = 20;
+	if (sizea <= 100)
+		group = 17;
+	if (sizea <= 50)
+		group = 11;
+	return (group);
+}
+
 void	context_reset(t_stack **a, t_stack **b, t_context **context)
 {
 	(*context)->sizea = lst_size(*a);
 	(*context)->sizeb = lst_size(*b);
 	(*context)->limitb = ((*context)->sizeb / 2) + 1;
 	high_low(b, context);
-
-	(*context)->group_size = 37;
-	
+	(*context)->group_size = get_group_size((*context)->sizea);
 	(*context)->group_inc = (((*context)->pushed_inc / \
 		(*context)->group_size) + 1) * (*context)->group_size;
 }
