@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 15:24:23 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:16:06 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_candidate
 	int	destination;
 	int	nrb;
 	int	nrrb;
+	struct s_candidate	*next;
+	struct s_candidate	*previous;
 }				t_candidate;
 
 int			lst_clear(t_stack **lst, int val);
@@ -94,15 +96,10 @@ t_stack		**sa(t_stack **a);
 t_stack		**sb(t_stack **b);
 t_stack		**ss(t_stack **a, t_stack **b, int pass_b);
 
-t_candidate	*init_candidate(void);
-void		candidate_reset(t_candidate **candidate);
-void		find_candidate(t_stack **a, t_context **context,
-				t_candidate **top, t_candidate **btm);
+// void		candidate_reset(t_candidate **candidate);
 int			get_position(t_stack **b, int index);
-void		find_destination(t_stack **b, t_candidate **top,
-				t_candidate **btm, t_context **context);
-int			find_and_apply_route(t_stack **a, t_stack **b,
-				t_candidate **top, t_candidate **btm);
+void	find_destination(t_stack **b, t_candidate **c, t_context **context);
+int			find_and_apply_route(t_stack **a, t_stack **b, t_candidate **c);
 t_context	*init_context(void);
 void		context_reset(t_stack **a, t_stack **b, t_context **context);
 int			sort_three(t_stack **a);
@@ -111,4 +108,26 @@ int			sort_above_entry(t_stack **a, t_stack **b);
 int			lst_issorted(t_stack *lst, int descending);
 void		display_stacks(t_stack *a, t_stack *b);
 void		print_action(char *str);
+
+
+
+t_candidate	*find_candidates(t_stack **a, t_context **context, t_candidate *c);
+// int			init_candidate(t_candidate **previous);
+
+
+
+void	debug_candidates(t_candidate **c);
+void	debug_routes(t_route **route);
+void	display_stacks(t_stack *a, t_stack *b);
+
+t_candidate *candidate_rewind(t_candidate *lst);
+t_route	*route_rewind(t_route *lst);
+
+
+
+
+// CLEAR
+int	clear_candidates(t_candidate **lst, int value);
+int	clear_routes(t_route **route, int value);
+
 #endif

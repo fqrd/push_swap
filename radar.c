@@ -6,19 +6,19 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:52:01 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 16:15:57 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:48:06 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-static int	init_route(t_route **previous)
+static t_route	*init_route(t_route *previous)
 {
 	t_route	*route;
 
 	route = malloc(sizeof(t_route) * 1);
 	if (!route)
-		return (0);
+		return (NULL);
 	route->operations = 0;
 	route->ra = -1;
 	route->rra = -1;
@@ -26,15 +26,14 @@ static int	init_route(t_route **previous)
 	route->rrb = -1;
 	route->rr = -1;
 	route->rrr = -1;
-	route->previous = *previous;
-	if (*previous)
-		(*previous)->next = route;
+	route->previous = previous;
+	if (previous)
+		previous->next = route;
 	route->next = NULL;
-	*previous = route; 
-	return (1);
+	return (route);
 }
 
-static t_route	*route_rewind(t_route *lst)
+t_route	*route_rewind(t_route *lst)
 {
 	if (lst)
 	{
@@ -46,25 +45,6 @@ static t_route	*route_rewind(t_route *lst)
 		}
 	}
 	return (lst);
-}
-
-static int	clear_routes(t_route **route, int value)
-{
-	t_route	*p;
-
-	*route = route_rewind(*route);
-	while (*route)
-	{
-		if (!(*route)->next)
-		{
-			free(*route);
-			break ;
-		}
-		p = (*route)->next;
-		free (*route);
-		*route = p;
-	}
-	return (value);
 }
 
 static void	count_moves(t_route **route)
@@ -127,21 +107,23 @@ static void	laying_routes(t_candidate **candidate, t_route **route, int i, int j
 	count_moves(route);
 }
 
-static int	map_routes(t_candidate **candidate, t_route **route, int i, int j)
+static t_route	*map_routes(t_candidate **c, t_route *route, int i, int j)
 {
+	t_route	*p;
+
 	while (++i < 2)
 	{
 		j = -1;
 		while (++j < 2)
 		{
-			if (!init_route(route))
-				return (clear_routes(route, 0));
-			if ((*route)->next)
-				*route = (*route)->next;
-			laying_routes(candidate, route, i, j);
+			p = init_route(route);
+			if (!p)
+				return (0);
+			route = p;
+			laying_routes(c, &route, i, j);
 		}
 	}
-	return (1);
+	return (route);
 }
 
 static t_route	*best_route(t_route **route)
@@ -163,6 +145,17 @@ static t_route	*best_route(t_route **route)
 			break ;
 		*route = (*route)->next;
 	}
+
+	// printf("[Best route]\n");
+	// printf("%d / %d / %d / %d / %d / %d / %d /\n",
+	// 	p->operations,
+	// 	p->ra,
+	// 	p->rra,
+	// 	p->rb,
+	// 	p->rrb,
+	// 	p->rr,
+	// 	p->rrr
+	// );
 	return (p);
 }
 
@@ -182,16 +175,23 @@ static void	apply_route(t_route *route, t_stack **a, t_stack **b)
 		rrb(b);
 }
 
-int	find_and_apply_route(t_stack **a, t_stack **b, t_candidate **top,
-	t_candidate **btm)
+int	find_and_apply_route(t_stack **a, t_stack **b, t_candidate **c)
 {
 	t_route	*route;
 
 	route = NULL;
-	if (!map_routes(top, &route, -1, -1))
-		return (0);
-	if (!map_routes(btm, &route, -1, -1))
-		return (0);
+
+	*c = candidate_rewind(*c);
+	while (*c)
+	{
+		route = map_routes(c, route, -1, -1);
+		if (!route)
+			return (0);
+		if (!(*c)->next)
+			break ;
+		*c = (*c)->next;
+	}
+	clear_candidates(c, 1);
 	apply_route(best_route(&route), a, b);
 	return (clear_routes(&route, 1));
 }

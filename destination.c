@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 00:15:39 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:46:55 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,33 @@ static int	get_opening(t_stack **b, int index)
 	return (place);
 }
 
-static void	find_opening(t_stack **b, t_candidate **candidate,
+static void	find_opening(t_stack **b, t_candidate **c,
 	t_context **context)
 {
 	int	result;
 
-	if ((*context)->sizeb > 0)
+	*c = candidate_rewind(*c);
+	while (*c)
 	{
-		if ((*candidate)->index > (*context)->highestb
-			|| (*candidate)->index < (*context)->lowestb)
-			(*candidate)->destination = get_position(b, (*context)->highestb);
-		else
-			(*candidate)->destination = get_opening(b, (*candidate)->index);
+		if ((*context)->sizeb > 0)
+		{
+			if ((*c)->index > (*context)->highestb
+				|| (*c)->index < (*context)->lowestb)
+				(*c)->destination = get_position(b, (*context)->highestb);
+			else
+				(*c)->destination = get_opening(b, (*c)->index);
+		}
+		(*c)->nrb = (*c)->destination;
+		(*c)->nrrb = (*context)->sizeb - (*c)->destination;
+		if (!(*c)->next)
+			break ;
+		*c = (*c)->next;
 	}
-	(*candidate)->nrb = (*candidate)->destination;
-	(*candidate)->nrrb = (*context)->sizeb - (*candidate)->destination;
 }
 
-void	find_destination(t_stack **b, t_candidate **top, t_candidate **btm,
+void	find_destination(t_stack **b, t_candidate **c,
 	t_context **context)
 {
-	find_opening(b, top, context);
-	find_opening(b, btm, context);
+
+	find_opening(b, c, context);
 }
