@@ -6,21 +6,22 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 13:12:52 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:32:03 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
+
 void	print_action(char *str)
 {
 
-	static size_t i = 0;
-	i++;
-	printf("%s [%ld]\n", str, i);
-	// printf("%s\n", str);
+	// static size_t i = 0;
+	// i++;
+	// printf("%s [%ld]\n", str, i);
+	printf("%s\n", str);
 }
 
-void	sort(size_t argc, t_stack **a, t_stack **b)
+static int	sort(size_t argc, t_stack **a, t_stack **b)
 {
 	if (argc <= 3)
 		sort_three(a);
@@ -28,11 +29,12 @@ void	sort(size_t argc, t_stack **a, t_stack **b)
 		sort_five(a, b);
 	else
 	{
-		sort_above_entry(a, b);
+		if (!sort_above_entry(a, b))
+			return (0);
 	}
+	return (1);
 }
 
-// display_stacks(a, b);
 static int	push_swap(int argc, char *argv[])
 {
 	t_stack	*a;
@@ -49,12 +51,16 @@ static int	push_swap(int argc, char *argv[])
 	set_indexes(&a, lst_size(a));
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
-	sort((size_t) argc - 1, &a, &b);
+	if (!sort((size_t) argc - 1, &a, &b))
+		return (lst_clear(&a, 1) && lst_clear(&b, 0));
+	// display_stacks(a, b);
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }
 
 int	main(int argc, char *argv[])
 {
+	if (argc == 1)
+		return (0);
 	if (!push_swap(argc, argv))
 		printf("Error\n");
 	return (0);

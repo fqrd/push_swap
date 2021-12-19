@@ -6,20 +6,12 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 00:19:28 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:31:38 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-// context->limita = 0;
-// context->positiona = 0;
-// context->positionb = 0;
-// context->actions = 0;
-// context->firsta = NULL;
-// context->lasta = NULL;
-// context->firstb = NULL;
-// context->lastb = NULL;
 t_context	*init_context(void)
 {
 	t_context	*context;
@@ -75,14 +67,11 @@ void	context_reset(t_stack **a, t_stack **b, t_context **context)
 {
 	(*context)->sizea = lst_size(*a);
 	(*context)->sizeb = lst_size(*b);
-	(*context)->limita = ((*context)->sizea / 2) + 1;
 	(*context)->limitb = ((*context)->sizeb / 2) + 1;
-	(*context)->firsta = lst_rewind(*a);
-	(*context)->lasta = lst_forward(*a);
-	(*context)->firstb = lst_rewind(*b);
-	(*context)->lastb = lst_forward(*b);
 	high_low(b, context);
-	(*context)->group_size = 50;
+
+	(*context)->group_size = 37;
+	
 	(*context)->group_inc = (((*context)->pushed_inc / \
 		(*context)->group_size) + 1) * (*context)->group_size;
 }

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 00:15:28 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:27:21 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ static int	sort_above(t_stack **a, t_stack **b, t_context **context, t_candidate
 		find_candidate(a, context, top, btm);
 		find_destination(b, top, btm, context);
 		if ((*context)->sizeb > 1)
-		{
-			find_and_apply_route(a, b, top, btm);
+		{	
+			if (!find_and_apply_route(a, b, top, btm))
+				return (0);
 			(*context)->pushed_inc++;
 			sort_above(pb(a, b, 0), b, context, top, btm);
 		}
 		else
 		{
-			find_and_apply_route(a, b, top, btm);
+			if (!find_and_apply_route(a, b, top, btm))
+				return (0);
 			(*context)->pushed_inc++;
 			sort_above(pb(a, b, 0), b, context, top, btm);
 		}
@@ -63,7 +65,7 @@ static int	sort_above(t_stack **a, t_stack **b, t_context **context, t_candidate
 		back_to_a(a, b, context);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 static int	error_free(t_context *context, t_candidate *top, t_candidate *btm, int value)
@@ -92,6 +94,7 @@ int	sort_above_entry(t_stack **a, t_stack **b)
 	btm = init_candidate();
 	if (!btm)
 		return (error_free(context, top, btm, 0));
-	sort_above(a, b, &context, &top, &btm);
+	if (!sort_above(a, b, &context, &top, &btm))
+		return (error_free(context, top, btm, 0));
 	return (error_free(context, top, btm, 1));
 }

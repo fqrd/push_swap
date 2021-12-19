@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 00:20:39 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:24:23 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,14 @@ typedef struct s_stack
 
 typedef struct s_context
 {
-	size_t			limita;
 	size_t			limitb;
 	size_t			sizea;
 	size_t			sizeb;
-	size_t			positiona;
-	size_t			positionb;
-	size_t			actions;
 	int				highestb;
 	int				lowestb;
 	int				group_size;
 	int				group_inc;
 	int				pushed_inc;
-	struct s_stack	*firsta;
-	struct s_stack	*lasta;
-	struct s_stack	*firstb;
-	struct s_stack	*lastb;
 	int				ra;
 	int				rra;
 	int				rb;
