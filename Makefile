@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 21:55:03 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 22:40:45 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ MANDATORY_SRC = ./moves/
 SRCS = \
 	push_swap.c						\
 	validation.c					\
-	preparation.c					\
 	stacks.c						\
 	stacks_utils.c					\
 	$(MANDATORY_SRC)px.c			\
