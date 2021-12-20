@@ -6,13 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:06 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:42:54 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:15:22 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	px(t_stack **x, t_stack **y)
+static void	px(t_stack **x, t_stack **y)
 {
 	t_stack	*topx;
 	t_stack	*topy;

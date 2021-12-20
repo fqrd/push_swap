@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:27:05 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:20:28 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,14 @@ static int	sort(t_stack **a, t_stack **b, t_context **context,
 		find_destination(b, &c, context);
 		if ((*context)->sizeb > 1)
 		{
-			if (!find_and_apply_route(a, b, &c))
+			if (!navigate(a, b, &c))
 				return (clear_candidates(&c, 0));
-			(*context)->pushed_inc++;
 			sort(pb(a, b, 0), b, context, NULL);
 		}
 		else
 		{
-			if (!find_and_apply_route(a, b, &c))
+			if (!navigate(a, b, &c))
 				return (clear_candidates(&c, 0));
-			(*context)->pushed_inc++;
 			sort(pb(a, b, 0), b, context, NULL);
 		}
 	}

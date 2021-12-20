@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:50:52 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:10:41 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_candidate	*init_candidate(t_candidate *previous)
 	return (candidate);
 }
 
-static t_candidate	*find_closest_r(t_stack **a, t_context **context,
+t_candidate	*find_candidates(t_stack **a, t_context **context,
 	t_candidate *c)
 {
 	size_t		i;
@@ -90,11 +90,4 @@ static t_candidate	*find_closest_r(t_stack **a, t_context **context,
 		i++;
 	}
 	return (c);
-}
-
-t_candidate	*find_candidates(t_stack **a, t_context **context, t_candidate *c)
-{
-	c = find_closest_r(a, context, c);
-	if (!c)
-		return (NULL);
 }

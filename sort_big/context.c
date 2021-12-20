@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:50:48 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:12:07 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,11 @@ t_context	*init_context(t_stack *a)
 	context = malloc(sizeof(t_context) * 1);
 	if (!context)
 		return (NULL);
-	context->group_size = lst_size(a);
 	context->limitb = 0;
 	context->sizea = 0;
 	context->sizeb = 0;
-	context->group_inc = 0;
-	context->pushed_inc = 0;
 	context->highestb = 0;
 	context->lowestb = 0;
-	context->ra = 0;
-	context->rra = 0;
-	context->rb = 0;
-	context->rrb = 0;
-	context->rr = 0;
-	context->rrr = 0;
 	return (context);
 }
 
@@ -69,6 +60,4 @@ void	context_reset(t_stack **a, t_stack **b, t_context **context)
 	(*context)->sizeb = lst_size(*b);
 	(*context)->limitb = ((*context)->sizeb / 2) + 1;
 	high_low(b, context);
-	(*context)->group_inc = (((*context)->pushed_inc / \
-		(*context)->group_size) + 1) * (*context)->group_size;
 }

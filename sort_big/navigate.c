@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:52:01 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:50:43 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:20:17 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	apply_route(t_route *route, t_stack **a, t_stack **b)
 		rrb(b);
 }
 
-int	find_and_apply_route(t_stack **a, t_stack **b, t_candidate **c)
+int	navigate(t_stack **a, t_stack **b, t_candidate **c)
 {
 	t_route	*route;
 
