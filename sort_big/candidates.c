@@ -6,11 +6,11 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:34:59 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:50:52 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 t_candidate	*candidate_rewind(t_candidate *lst)
 {

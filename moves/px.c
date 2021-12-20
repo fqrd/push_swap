@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushy.c                                            :+:      :+:    :+:   */
+/*   px.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:45:06 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 12:52:51 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:42:54 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	pushy(t_stack **x, t_stack **y)
+void	px(t_stack **x, t_stack **y)
 {
 	t_stack	*topx;
 	t_stack	*topy;
@@ -33,7 +33,7 @@ void	pushy(t_stack **x, t_stack **y)
 
 t_stack	**pa(t_stack **a, t_stack **b, int pass_b)
 {
-	pushy(b, a);
+	px(b, a);
 	ft_putstr("pa\n");
 	if (pass_b)
 		return (b);
@@ -42,7 +42,7 @@ t_stack	**pa(t_stack **a, t_stack **b, int pass_b)
 
 t_stack	**pb(t_stack **a, t_stack **b, int pass_b)
 {
-	pushy(a, b);
+	px(a, b);
 	ft_putstr("pb\n");
 	if (pass_b)
 		return (b);

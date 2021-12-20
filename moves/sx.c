@@ -1,52 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   returny.c                                          :+:      :+:    :+:   */
+/*   sx.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 17:45:26 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 12:52:55 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/12/20 21:42:57 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	returny(t_stack **x)
+void	sx(t_stack **x)
 {
 	t_stack	*top;
-	t_stack	*bottom;
+	t_stack	*next;
 
-	bottom = lst_rewind(*x);
-	if (!bottom || !bottom->next)
+	top = lst_rewind(*x);
+	if (!top || !top->next)
 		return ;
-	top = lst_forward(*x);
-	bottom->next->previous = NULL;
-	bottom->next = NULL;
-	bottom->previous = top;
-	top->next = bottom;
+	next = top->next;
+	top->next = next->next;
+	if (next->next)
+		next->next->previous = top;
+	top->previous = next;
+	next->next = top;
+	next->previous = NULL;
 	return ;
 }
 
-t_stack	**ra(t_stack **a)
+t_stack	**sa(t_stack **a)
 {
-	returny(a);
-	ft_putstr("ra\n");
+	sx(a);
+	ft_putstr("sa\n");
 	return (a);
 }
 
-t_stack	**rb(t_stack **b)
+t_stack	**sb(t_stack **b)
 {
-	returny(b);
-	ft_putstr("rb\n");
+	sx(b);
+	ft_putstr("sb\n");
 	return (b);
 }
 
-t_stack	**rr(t_stack **a, t_stack **b, int pass_b)
+t_stack	**ss(t_stack **a, t_stack **b, int pass_b)
 {
-	returny(a);
-	returny(b);
-	ft_putstr("rr\n");
+	sx(a);
+	sx(b);
+	ft_putstr("ss\n");
 	if (pass_b)
 		return (b);
 	return (a);

@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   preparation.c                                      :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:09:12 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/11/15 13:22:38 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/12/20 21:44:15 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	set_indexes(t_stack **lst, int len)
+int	sort_small(t_stack **a)
 {
-	int		gap;
-	t_stack	*p;
-
-	*lst = lst_rewind(*lst);
-	while ((*lst))
-	{
-		gap = 0;
-		p = lst_rewind(*lst);
-		while (p)
-		{
-			if (p->content > (*lst)->content)
-				gap++;
-			if (!p->next)
-				break ;
-			p = p->next;
-		}
-		(*lst)->index = len - gap;
-		if (!(*lst)->next)
-			break ;
-		*lst = (*lst)->next;
-	}
-	*lst = lst_rewind(*lst);
+	*a = lst_rewind(*a);
+	if (lst_issorted(*a, 0))
+		return (1);
+	if (((*a)->index == 2 && (*a)->next->index == 3)
+		|| ((*a)->index == 1 && (*a)->next->index == 3))
+		sort_small(rra(a));
+	else if ((*a)->index == 3 && (*a)->next->index == 1)
+		sort_small(ra(a));
+	else
+		sort_small(sa(a));
+	return (0);
 }

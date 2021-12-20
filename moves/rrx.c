@@ -1,54 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   switchy.c                                          :+:      :+:    :+:   */
+/*   rrx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 17:44:18 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 12:53:02 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/12/20 21:42:53 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	switchy(t_stack **x)
+void	rrx(t_stack **x)
 {
 	t_stack	*top;
-	t_stack	*next;
+	t_stack	*bottom;
 
-	top = lst_rewind(*x);
-	if (!top || !top->next)
+	bottom = lst_rewind(*x);
+	if (!bottom || !bottom->next)
 		return ;
-	next = top->next;
-	top->next = next->next;
-	if (next->next)
-		next->next->previous = top;
-	top->previous = next;
-	next->next = top;
-	next->previous = NULL;
+	top = lst_forward(*x);
+	top->previous->next = NULL;
+	top->previous = NULL;
+	top->next = bottom;
+	bottom->previous = top;
 	return ;
 }
 
-t_stack	**sa(t_stack **a)
+t_stack	**rra(t_stack **a)
 {
-	switchy(a);
-	ft_putstr("sa\n");
+	rrx(a);
+	ft_putstr("rra\n");
 	return (a);
 }
 
-t_stack	**sb(t_stack **b)
+t_stack	**rrb(t_stack **b)
 {
-	switchy(b);
-	ft_putstr("sb\n");
+	rrx(b);
+	ft_putstr("rrb\n");
 	return (b);
 }
 
-t_stack	**ss(t_stack **a, t_stack **b, int pass_b)
+t_stack	**rrr(t_stack **a, t_stack **b, int pass_b)
 {
-	switchy(a);
-	switchy(b);
-	ft_putstr("ss\n");
+	rrx(a);
+	rrx(b);
+	ft_putstr("rrr\n");
 	if (pass_b)
 		return (b);
 	return (a);

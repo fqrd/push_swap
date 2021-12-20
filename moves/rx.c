@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rreturny.c                                         :+:      :+:    :+:   */
+/*   rx.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 12:52:58 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/07/29 17:45:26 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/12/20 21:51:30 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rreturny(t_stack **x)
+void	rx(t_stack **x)
 {
 	t_stack	*top;
 	t_stack	*bottom;
@@ -21,32 +21,32 @@ void	rreturny(t_stack **x)
 	if (!bottom || !bottom->next)
 		return ;
 	top = lst_forward(*x);
-	top->previous->next = NULL;
-	top->previous = NULL;
-	top->next = bottom;
+	bottom->next->previous = NULL;
+	bottom->next = NULL;
 	bottom->previous = top;
+	top->next = bottom;
 	return ;
 }
 
-t_stack	**rra(t_stack **a)
+t_stack	**ra(t_stack **a)
 {
-	rreturny(a);
-	ft_putstr("rra\n");
+	rx(a);
+	ft_putstr("ra\n");
 	return (a);
 }
 
-t_stack	**rrb(t_stack **b)
+t_stack	**rb(t_stack **b)
 {
-	rreturny(b);
-	ft_putstr("rrb\n");
+	rx(b);
+	ft_putstr("rb\n");
 	return (b);
 }
 
-t_stack	**rrr(t_stack **a, t_stack **b, int pass_b)
+t_stack	**rr(t_stack **a, t_stack **b, int pass_b)
 {
-	rreturny(a);
-	rreturny(b);
-	ft_putstr("rrr\n");
+	rx(a);
+	rx(b);
+	ft_putstr("rr\n");
 	if (pass_b)
 		return (b);
 	return (a);

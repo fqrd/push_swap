@@ -6,11 +6,11 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:33:16 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:50:48 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 t_context	*init_context(t_stack *a)
 {

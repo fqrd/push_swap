@@ -6,11 +6,11 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:13:15 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:51:52 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 int	get_position(t_stack **b, int index)
 {
