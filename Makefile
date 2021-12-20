@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 21:28:07 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 21:35:44 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,17 +29,14 @@ SRCS = \
 	$(MANDATORY_SRC)returny.c		\
 	$(MANDATORY_SRC)rreturny.c		\
 	$(MANDATORY_SRC)switchy.c		\
-	list_utils.c					\
-	lists.c							\
+	stacks_utils.c					\
+	stacks.c						\
 	push_swap.c						\
 	context.c						\
 	candidates.c					\
 	destination.c					\
 	navigate.c						\
-	clear.c							\
-	display.c						\
 	routes.c						\
-	rewinders.c						\
 
 OBJS = $(SRCS:.c=.o)
 

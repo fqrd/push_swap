@@ -6,11 +6,43 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:52:01 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:27:56 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:34:42 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
+
+t_route	*route_rewind(t_route *lst)
+{
+	if (lst)
+	{
+		while (lst)
+		{
+			if (!lst->previous)
+				return (lst);
+			lst = lst->previous;
+		}
+	}
+	return (lst);
+}
+
+void	clear_routes(t_route **route)
+{
+	t_route	*p;
+
+	*route = route_rewind(*route);
+	while (*route)
+	{
+		if (!(*route)->next)
+		{
+			free(*route);
+			break ;
+		}
+		p = (*route)->next;
+		free (*route);
+		*route = p;
+	}
+}
 
 static t_route	*best_route(t_route **route)
 {

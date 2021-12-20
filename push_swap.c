@@ -6,11 +6,16 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:48:35 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:34:04 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
+
+int	ft_puterror(char *err)
+{
+	return (write(2, err, ft_strlen(err)));
+}
 
 static int	sort(size_t argc, t_stack **a, t_stack **b)
 {

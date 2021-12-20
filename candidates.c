@@ -6,11 +6,44 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 14:20:55 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:34:59 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
+
+t_candidate	*candidate_rewind(t_candidate *lst)
+{
+	if (lst)
+	{
+		while (lst)
+		{
+			if (!lst->previous)
+				return (lst);
+			lst = lst->previous;
+		}
+	}
+	return (lst);
+}
+
+int	clear_candidates(t_candidate **lst, int value)
+{
+	t_candidate	*p;
+
+	*lst = candidate_rewind(*lst);
+	while (*lst)
+	{
+		if (!(*lst)->next)
+		{
+			free(*lst);
+			break ;
+		}
+		p = (*lst)->next;
+		free (*lst);
+		*lst = p;
+	}
+	return (value);
+}
 
 static t_candidate	*init_candidate(t_candidate *previous)
 {
