@@ -6,11 +6,11 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/28 15:26:58 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:09:12 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	set_indexes(t_stack **lst, int len)
 {

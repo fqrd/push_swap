@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 14:16:00 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 15:49:01 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,21 @@ LIBS_PATH = ./libft/
 NAME = push_swap
 
 STRATEGIES_SRC = ./strategies/
-MANDATORY_SRC = ./mandatory_functions/
+PRE_SORT_SRC = ./pre_sort/
+MANDATORY_SRC = ./moves/
 SRCS = \
-	$(STRATEGIES_SRC)sort_above.c	\
-	$(STRATEGIES_SRC)sort_five.c	\
-	$(STRATEGIES_SRC)sort_three.c	\
+	$(PRE_SORT_SRC)preparation.c	\
+	$(PRE_SORT_SRC)validation.c		\
+	$(STRATEGIES_SRC)sort_big.c		\
+	$(STRATEGIES_SRC)sort_medium.c	\
+	$(STRATEGIES_SRC)sort_small.c	\
 	$(MANDATORY_SRC)pushy.c			\
 	$(MANDATORY_SRC)returny.c		\
 	$(MANDATORY_SRC)rreturny.c		\
 	$(MANDATORY_SRC)switchy.c		\
 	list_utils.c					\
 	lists.c							\
-	preparation.c					\
 	push_swap.c						\
-	validation.c					\
 	context.c						\
 	candidates.c					\
 	destination.c					\
@@ -49,7 +50,7 @@ $(NAME): $(OBJS) makelibft
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(CFLAGS) $(NAME)
 
 clean:
-	rm -f $(STRATEGIES_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o
+	rm -f $(STRATEGIES_SRC)*.o $(PRE_SORT_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o
 
 fclean: cleanlibft clean
 	rm ./$(NAME)

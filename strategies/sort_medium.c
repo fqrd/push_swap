@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_five.c                                        :+:      :+:    :+:   */
+/*   sort_medium.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 13:22:42 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/11/28 15:34:00 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:01:48 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	top_to_b(t_stack **a, t_stack **b)
 		return (1);
 	if ((*a)->index == 1 || (*a)->index == 2)
 		return (top_to_b(pb(a, b, 0), b));
-	if ((*a)->next && (((*a)->next->index == 1 || (*a)->next->index == 2)))
-		return (top_to_b(ra(a), b));
-	else if ((*a)->next && (*a)->next->next
-		&& (((*a)->next->next->index == 1 || (*a)->next->next->index == 2)))
+	if (((*a)->next && (((*a)->next->index == 1 || (*a)->next->index == 2)))
+		|| ((*a)->next && (*a)->next->next
+			&& (((*a)->next->next->index == 1
+					|| (*a)->next->next->index == 2))))
 		return (top_to_b(ra(a), b));
 	else
 		return (top_to_b(rra(a), b));
@@ -44,7 +44,7 @@ static int	sort_a(t_stack **x)
 	return (0);
 }
 
-int	sort_five(t_stack **a, t_stack **b)
+int	sort_medium(t_stack **a, t_stack **b)
 {
 	int	a_size;
 	int	sorted_a;
@@ -61,6 +61,6 @@ int	sort_five(t_stack **a, t_stack **b)
 		sort_a(a);
 	if (!lst_issorted(*(pa(pa(a, b, 0), b, 0)), 0))
 		sa(a);
-	sort_five(a, b);
+	sort_medium(a, b);
 	return (0);
 }

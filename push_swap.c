@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 12:58:32 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:48:35 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 static int	sort(size_t argc, t_stack **a, t_stack **b)
 {
 	if (argc <= 3)
-		sort_three(a);
+		sort_small(a);
 	else if (argc == 5)
-		sort_five(a, b);
+		sort_medium(a, b);
 	else
-	{
-		if (!sort_above_entry(a, b))
-			return (0);
-	}
+		return (sort_big(a, b));
 	return (1);
 }
 
