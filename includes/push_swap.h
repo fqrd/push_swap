@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 19:16:06 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 12:08:22 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ void	display_stacks(t_stack *a, t_stack *b);
 t_candidate *candidate_rewind(t_candidate *lst);
 t_route	*route_rewind(t_route *lst);
 
+
+// display
+int	ft_puterror(char *err);
 
 
 

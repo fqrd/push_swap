@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/19 19:13:06 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 12:08:39 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS = \
 	destination.c					\
 	radar.c							\
 	clear.c							\
+	display.c						\
 	debug.c							\
 
 OBJS = $(SRCS:.c=.o)

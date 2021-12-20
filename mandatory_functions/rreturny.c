@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 17:46:49 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/13 17:00:41 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 12:11:34 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	rreturny(t_stack **x)
 t_stack	**rra(t_stack **a)
 {
 	rreturny(a);
-	print_action("rra");
+	print_action("rra\n");
 	return (a);
 }
 
 t_stack	**rrb(t_stack **b)
 {
 	rreturny(b);
-	print_action("rrb");
+	print_action("rrb\n");
 	return (b);
 }
 
@@ -46,7 +46,7 @@ t_stack	**rrr(t_stack **a, t_stack **b, int pass_b)
 {
 	rreturny(a);
 	rreturny(b);
-	print_action("rrr");
+	print_action("rrr\n");
 	if (pass_b)
 		return (b);
 	return (a);
