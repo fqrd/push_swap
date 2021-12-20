@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks_utils.c                                       :+:      :+:    :+:   */
+/*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 13:10:43 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:11:40 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-size_t	lst_size(t_stack *lst)
+size_t	lst_size(t_link *lst)
 {
 	size_t	i;
 
@@ -31,14 +31,14 @@ size_t	lst_size(t_stack *lst)
 	return (i);
 }
 
-int	lst_issorted(t_stack *lst, int descending)
+int	lst_issorted(t_link *lst, int descending)
 {
 	lst = lst_rewind(lst);
 	if (descending)
 	{
 		while (lst)
 		{
-			if (lst->next && lst->index <= lst->next->index)
+			if (lst->next && ((t_stack *)(lst->content))->index <= ((t_stack *)(lst->next->content))->index)
 				return (0);
 			if (!lst->next)
 				break ;
@@ -49,7 +49,7 @@ int	lst_issorted(t_stack *lst, int descending)
 	{
 		while (lst)
 		{
-			if (lst->next && lst->index >= lst->next->index)
+			if (lst->next && ((t_stack *)(lst->content))->index >= ((t_stack *)(lst->next->content))->index)
 				return (0);
 			if (!lst->next)
 				break ;

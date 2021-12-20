@@ -6,12 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:48:35 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:18:43 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
+/*
 static int	sort(size_t argc, t_stack **a, t_stack **b)
 {
 	if (argc <= 3)
@@ -22,11 +23,11 @@ static int	sort(size_t argc, t_stack **a, t_stack **b)
 		return (sort_big(a, b));
 	return (1);
 }
-
+*/
 static int	push_swap(int argc, char *argv[])
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_link	*a;
+	t_link	*b;
 
 	a = NULL;
 	b = NULL;
@@ -37,11 +38,15 @@ static int	push_swap(int argc, char *argv[])
 	if (!duplicates_check(a))
 		return (lst_clear(&a, 0));
 	set_indexes(&a, lst_size(a));
+	debug_stacks(a, b);
+	exit(0);
+	/*
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
 	if (!sort((size_t) argc - 1, &a, &b))
 		return (lst_clear(&a, 1) && lst_clear(&b, 0));
-	return (lst_clear(&a, 1) && lst_clear(&b, 1));
+	// debug_stacks(a, b);
+	return (lst_clear(&a, 1) && lst_clear(&b, 1));*/
 }
 
 int	main(int argc, char *argv[])

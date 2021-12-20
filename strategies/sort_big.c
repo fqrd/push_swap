@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big.c                                       :+:      :+:    :+:   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:45:09 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 18:08:36 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,13 @@ static int	sort(t_stack **a, t_stack **b, t_context **context,
 	if ((*context)->sizea > 0)
 	{
 		c = find_candidates(a, context, c);
+		if (!c)
+			return (0);
 		find_destination(b, &c, context);
-		if ((*context)->sizeb > 1)
-		{
-			if (!find_and_apply_route(a, b, &c))
-				return (clear_candidates(&c, 0));
-			(*context)->pushed_inc++;
-			sort(pb(a, b, 0), b, context, NULL);
-		}
-		else
-		{
-			if (!find_and_apply_route(a, b, &c))
-				return (clear_candidates(&c, 0));
-			(*context)->pushed_inc++;
-			sort(pb(a, b, 0), b, context, NULL);
-		}
+		if (!find_and_apply_route(a, b, &c))
+			return (clear_candidates(&c, 0));
+		(*context)->pushed_inc++;
+		sort(pb(a, b, 0), b, context, NULL);
 	}
 	else
 		return (conclude(a, b, context));

@@ -6,16 +6,16 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 13:50:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:09:12 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:08:44 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	set_indexes(t_stack **lst, int len)
+void	set_indexes(t_link **lst, int len)
 {
 	int		gap;
-	t_stack	*p;
+	t_link	*p;
 
 	*lst = lst_rewind(*lst);
 	while ((*lst))
@@ -24,13 +24,13 @@ void	set_indexes(t_stack **lst, int len)
 		p = lst_rewind(*lst);
 		while (p)
 		{
-			if (p->content > (*lst)->content)
+			if ((((t_stack *)(p->content))->content) > ((t_stack *)(*lst)->content)->content)
 				gap++;
 			if (!p->next)
 				break ;
 			p = p->next;
 		}
-		(*lst)->index = len - gap;
+		((t_stack *)(*lst)->content)->index = len - gap;
 		if (!(*lst)->next)
 			break ;
 		*lst = (*lst)->next;

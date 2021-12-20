@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 15:49:01 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 20:14:15 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,27 +20,27 @@ STRATEGIES_SRC = ./strategies/
 PRE_SORT_SRC = ./pre_sort/
 MANDATORY_SRC = ./moves/
 SRCS = \
-	$(PRE_SORT_SRC)preparation.c	\
-	$(PRE_SORT_SRC)validation.c		\
-	$(STRATEGIES_SRC)sort_big.c		\
-	$(STRATEGIES_SRC)sort_medium.c	\
-	$(STRATEGIES_SRC)sort_small.c	\
-	$(MANDATORY_SRC)pushy.c			\
-	$(MANDATORY_SRC)returny.c		\
-	$(MANDATORY_SRC)rreturny.c		\
-	$(MANDATORY_SRC)switchy.c		\
-	list_utils.c					\
-	lists.c							\
 	push_swap.c						\
-	context.c						\
-	candidates.c					\
-	destination.c					\
-	radar.c							\
-	clear.c							\
-	display.c						\
-	routes.c						\
+	stacks.c						\
+	stacks_utils.c					\
 	rewinders.c						\
-	debug.c							\
+	$(PRE_SORT_SRC)validation.c		\
+	$(PRE_SORT_SRC)preparation.c	\
+	clear.c							\
+	____debug.c						\
+	display.c						\
+	# context.c						\
+	# candidates.c					\
+	# destination.c					\
+	# navigate.c						\
+	# routes.c						\
+	# $(STRATEGIES_SRC)sort_big.c		\
+	# $(STRATEGIES_SRC)sort_medium.c	\
+	# $(STRATEGIES_SRC)sort_small.c	\
+	# $(MANDATORY_SRC)pushy.c			\
+	# $(MANDATORY_SRC)returny.c		\
+	# $(MANDATORY_SRC)rreturny.c		\
+	# $(MANDATORY_SRC)switchy.c		\
 
 OBJS = $(SRCS:.c=.o)
 

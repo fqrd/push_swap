@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:48:28 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:12:02 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
-	struct s_stack	*next;
-	struct s_stack	*previous;
+	// struct s_stack	*next;
+	// struct s_stack	*previous;
 }					t_stack;
 
 typedef struct s_context
 {
-	size_t			ttl;
 	size_t			limitb;
 	size_t			sizea;
 	size_t			sizeb;
@@ -71,10 +70,18 @@ typedef struct s_candidate
 	struct s_candidate	*previous;
 }				t_candidate;
 
+typedef	struct	s_link
+{
+	void	*content;
+	struct	s_link	*next;
+	struct	s_link	*previous;
+}				t_link;
+
 // CHECKES / PREPARATION
-int			duplicates_check(t_stack *lst);
-int			parser(int argc, char *argv[], t_stack **a);
-void		set_indexes(t_stack **lst, int len);
+int	duplicates_check(t_link *lst);
+int	parser(int argc, char *argv[], t_link **a);
+void	set_indexes(t_link **lst, int len);
+
 // MOVES
 void		pushy(t_stack **x, t_stack **y);
 void		returny(t_stack **x);
@@ -93,10 +100,14 @@ t_stack		**sb(t_stack **b);
 t_stack		**ss(t_stack **a, t_stack **b, int pass_b);
 // STACKS
 t_stack		*lst_create(int argc, char *argv[]);
-t_stack		*lst_new(t_stack **previous, int content);
-size_t		lst_size(t_stack *lst);
-int			lst_issorted(t_stack *lst, int descending);
-void		lst_delete(t_stack **lst);
+
+t_link	*lst_new(t_link **previous, int content);
+// t_stack		*lst_new(t_stack **previous, int content);
+
+size_t		lst_size(t_link *lst);
+int	lst_issorted(t_link *lst, int descending);
+void	lst_delete(t_link **lst);
+
 // CONTEXT
 t_context	*init_context(t_stack *a);
 void		context_reset(t_stack **a, t_stack **b, t_context **context);
@@ -111,21 +122,28 @@ int			sort_big(t_stack **a, t_stack **b);
 void		find_destination(t_stack **b, t_candidate **c, t_context **context);
 // CANDIDATES
 t_candidate	*find_candidates(t_stack **a, t_context **context, t_candidate *c);
-// DEBUG
-void		debug_candidates(t_candidate **c);
-void		debug_routes(t_route **route);
-void		debug_stacks(t_stack *a, t_stack *b);
 // REWINDERS
-t_stack		*lst_forward(t_stack *lst);
-t_stack		*lst_rewind(t_stack *lst);
+t_link		*lst_forward(t_link *lst);
+t_link		*lst_rewind(t_link *lst);
+
 t_candidate	*candidate_rewind(t_candidate *lst);
 t_route		*route_rewind(t_route *lst);
 // ROUTES
-t_route	*map_routes(t_candidate **c, t_route *route, int i, int j);
+t_route		*map_routes(t_candidate **c, t_route *route, int i, int j);
 // DISPLAY
 int			ft_puterror(char *err);
 // CLEAR
-int			lst_clear(t_stack **lst, int val);
+int	lst_clear(t_link **lst, int val);
 int			clear_candidates(t_candidate **lst, int value);
 void		clear_routes(t_route **route);
+
+
+
+// DEBUG
+void		debug_candidates(t_candidate **c);
+void		debug_routes(t_route **route);
+void	debug_stacks(t_link *a, t_link *b);
+
+
+
 #endif

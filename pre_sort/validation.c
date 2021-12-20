@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 15:32:25 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:18:33 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	free_splits(char **splits)
 	return (0);
 }
 
-int	parser(int argc, char *argv[], t_stack **a)
+int	parser(int argc, char *argv[], t_link **a)
 {
 	int		arg;
 	int		i;
@@ -89,9 +89,9 @@ int	parser(int argc, char *argv[], t_stack **a)
 	return (1);
 }
 
-int	duplicates_check(t_stack *lst)
+int	duplicates_check(t_link *lst)
 {
-	t_stack	*p;
+	t_link	*p;
 
 	lst = lst_rewind(lst);
 	while (lst && lst->next)
@@ -100,7 +100,7 @@ int	duplicates_check(t_stack *lst)
 		while (p->next)
 		{	
 			p = p->next;
-			if (p->content == lst->content)
+			if (((t_stack *)(p->content))->content == ((t_stack *)(lst->content))->content)
 				return (0);
 		}
 		lst = lst->next;

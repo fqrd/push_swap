@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   ____debug.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:03:11 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 13:00:01 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 20:13:07 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
+/*
 void	debug_candidates(t_candidate **c)
 {
 
@@ -54,9 +55,9 @@ void	debug_routes(t_route **route)
 			break ;
 		*route = (*route)->next;
 	}
-}
+}*/
 
-void	debug_stacks(t_stack *a, t_stack *b)
+void	debug_stacks(t_link *a, t_link *b)
 {
 	printf("\n----------------\n\n***A STACK ***\n");
 	if (a)
@@ -64,7 +65,7 @@ void	debug_stacks(t_stack *a, t_stack *b)
 		a = lst_rewind(a);
 		while (a)
 		{
-			printf("%d > %d\n", a->index, a->content);
+			printf("%d > %d\n", ((t_stack *)a->content)->index, ((t_stack*)a->content)->content);
 			if (!a->next)
 				break ;
 			a = a->next;
@@ -77,7 +78,7 @@ void	debug_stacks(t_stack *a, t_stack *b)
 		b = lst_rewind(b);
 		while (b)
 		{
-			printf("%d > %d\n", b->index, b->content);
+			printf("%d > %d\n", ((t_stack *)b->content)->index, ((t_stack*)b->content)->content);
 			if (!b->next)
 				break ;
 			b = b->next;

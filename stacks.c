@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                            :+:      :+:    :+:   */
+/*   stacks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 23:48:02 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 21:17:51 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-t_stack	*lst_new(t_stack **previous, int content)
+t_link	*lst_new(t_link **previous, int content)
 {
-	t_stack	*list;
+	t_stack	*stack;
+	t_link	*link;
 
-	list = malloc(sizeof(t_stack) * 1);
-	if (!list)
+	link = malloc(sizeof(t_link) * 1);
+	if (!link)
 		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	list->previous = *previous;
+	stack = malloc(sizeof(t_stack) * 1);
+	if (!stack)
+		return (NULL);
+	stack->content = content;
+	link->content = stack;
+	link->next = NULL;
+	link->previous = *previous;
 	if (*previous)
-		(*previous)->next = list;
-	return (list);
+		(*previous)->next = link;
+	return (link);
 }
 
-t_stack	*lst_create(int argc, char *argv[])
+/*t_stack	*lst_create(int argc, char *argv[])
 {
 	int		i;
 	t_stack	*current;
@@ -45,11 +50,11 @@ t_stack	*lst_create(int argc, char *argv[])
 	}
 	previous->next = NULL;
 	return (lst_rewind(previous));
-}
+}*/
 
-int	lst_clear(t_stack **lst, int val)
+int	lst_clear(t_link **lst, int val)
 {
-	t_stack	*pre;
+	t_link	*pre;
 
 	if (lst)
 	{
@@ -59,6 +64,7 @@ int	lst_clear(t_stack **lst, int val)
 			if (!(*lst)->previous)
 				break ;
 			pre = (*lst)->previous;
+			free((*lst)->content);
 			lst_delete(lst);
 			*lst = pre;
 		}
@@ -68,7 +74,7 @@ int	lst_clear(t_stack **lst, int val)
 	return (val);
 }
 
-void	lst_delete(t_stack **lst)
+void	lst_delete(t_link **lst)
 {
 	if (*lst)
 	{
