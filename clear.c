@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:11:45 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 19:48:03 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 13:40:08 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	clear_candidates(t_candidate **lst, int value)
 	return (value);
 }
 
-int	clear_routes(t_route **route, int value)
+void	clear_routes(t_route **route)
 {
 	t_route	*p;
 
@@ -47,5 +47,11 @@ int	clear_routes(t_route **route, int value)
 		free (*route);
 		*route = p;
 	}
-	return (value);
 }
+
+/*
+void	clear_all(t_candidate **candidates, t_route **route, t_context **ctx)
+{
+	return (0);
+}
+*/

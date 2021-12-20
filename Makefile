@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 12:08:39 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/20 14:16:00 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRCS = \
 	radar.c							\
 	clear.c							\
 	display.c						\
+	routes.c						\
+	rewinders.c						\
 	debug.c							\
 
 OBJS = $(SRCS:.c=.o)
@@ -44,7 +46,7 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME): $(OBJS) makelibft
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(CFLAGS) $(NAME)
 
 clean:
 	rm -f $(STRATEGIES_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o

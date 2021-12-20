@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 19:46:55 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 12:55:17 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ static void	find_opening(t_stack **b, t_candidate **c,
 void	find_destination(t_stack **b, t_candidate **c,
 	t_context **context)
 {
-
 	find_opening(b, c, context);
 }

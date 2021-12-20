@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:03:11 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 19:15:50 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 13:00:01 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	debug_routes(t_route **route)
 	}
 }
 
-void	display_stacks(t_stack *a, t_stack *b)
+void	debug_stacks(t_stack *a, t_stack *b)
 {
 	printf("\n----------------\n\n***A STACK ***\n");
 	if (a)

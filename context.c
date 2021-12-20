@@ -6,19 +6,20 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/19 16:15:51 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:28:07 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-t_context	*init_context(void)
+t_context	*init_context(t_stack *a)
 {
 	t_context	*context;
 
 	context = malloc(sizeof(t_context) * 1);
 	if (!context)
 		return (NULL);
+	context->ttl = lst_size(a);
 	context->limitb = 0;
 	context->sizea = 0;
 	context->sizeb = 0;
@@ -63,32 +64,13 @@ static void	high_low(t_stack **b, t_context **context)
 	}
 }
 
-static int	get_group_size(size_t sizea)
-{
-	int group;
-
-	if (sizea > 500)
-		group = 50;
-	if (sizea <= 500)
-		group = 42;
-	if (sizea <= 400)
-		group = 37;
-	if (sizea <= 200)
-		group = 20;
-	if (sizea <= 100)
-		group = 17;
-	if (sizea <= 50)
-		group = 11;
-	return (group);
-}
-
 void	context_reset(t_stack **a, t_stack **b, t_context **context)
 {
 	(*context)->sizea = lst_size(*a);
 	(*context)->sizeb = lst_size(*b);
 	(*context)->limitb = ((*context)->sizeb / 2) + 1;
 	high_low(b, context);
-	(*context)->group_size = get_group_size((*context)->sizea);
+	(*context)->group_size = (*context)->ttl;
 	(*context)->group_inc = (((*context)->pushed_inc / \
 		(*context)->group_size) + 1) * (*context)->group_size;
 }

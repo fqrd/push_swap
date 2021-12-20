@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:08 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/18 23:48:16 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 13:10:43 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,6 @@ size_t	lst_size(t_stack *lst)
 	}
 	lst = lst_rewind(lst);
 	return (i);
-}
-
-t_stack	*lst_rewind(t_stack *lst)
-{
-	if (lst)
-	{
-		while (lst)
-		{
-			if (!lst->previous)
-				return (lst);
-			lst = lst->previous;
-		}
-	}
-	return (lst);
-}
-
-t_stack	*lst_forward(t_stack *lst)
-{
-	if (lst)
-	{
-		while (lst)
-		{
-			if (!lst->next)
-				return (lst);
-			lst = lst->next;
-		}
-	}
-	return (lst);
 }
 
 int	lst_issorted(t_stack *lst, int descending)
