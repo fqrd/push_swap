@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:34:04 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:34:11 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,32 @@
 int	ft_puterror(char *err)
 {
 	return (write(2, err, ft_strlen(err)));
+}
+
+static void	set_indexes(t_stack **lst, int len)
+{
+	int		gap;
+	t_stack	*p;
+
+	*lst = lst_rewind(*lst);
+	while ((*lst))
+	{
+		gap = 0;
+		p = lst_rewind(*lst);
+		while (p)
+		{
+			if (p->content > (*lst)->content)
+				gap++;
+			if (!p->next)
+				break ;
+			p = p->next;
+		}
+		(*lst)->index = len - gap;
+		if (!(*lst)->next)
+			break ;
+		*lst = (*lst)->next;
+	}
+	*lst = lst_rewind(*lst);
 }
 
 static int	sort(size_t argc, t_stack **a, t_stack **b)

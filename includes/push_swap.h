@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:25:56 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:34:26 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_candidate
 
 int			parser(int argc, char *argv[], t_stack **a);
 int			duplicates_check(t_stack *lst);
-void		set_indexes(t_stack **lst, int len);
 t_stack		**pa(t_stack **a, t_stack **b, int pass_b);
 t_stack		**pb(t_stack **a, t_stack **b, int pass_b);
 t_stack		**ra(t_stack **a);
