@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:53:48 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:51:52 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:42:15 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static int	get_opening(t_stack **b, int index)
 void	find_destination(t_stack **b, t_candidate **c,
 	t_context **context)
 {
-	int	result;
-
 	*c = candidate_rewind(*c);
 	while (*c)
 	{

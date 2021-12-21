@@ -6,17 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:34:26 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:41:55 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/include/libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
 
 typedef struct s_stack
 {
@@ -81,7 +77,7 @@ void		lst_delete(t_stack **lst);
 int			lst_clear(t_stack **lst, int val);
 t_stack		*lst_rewind(t_stack *lst);
 t_stack		*lst_forward(t_stack *lst);
-t_context	*init_context(t_stack *a);
+t_context	*init_context(void);
 void		context_reset(t_stack **a, t_stack **b, t_context **context);
 int			navigate(t_stack **a, t_stack **b, t_candidate **c);
 int			get_position(t_stack **b, int index);

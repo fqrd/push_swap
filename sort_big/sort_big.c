@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:20:28 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:42:00 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	conclude(t_stack **a, t_stack **b, t_context **context)
 	int	position;
 
 	position = get_position(b, (*context)->highestb);
-	if (position > (*context)->limitb)
+	if (position > (int)(*context)->limitb)
 	{
 		while ((*context)->sizeb - position++ > 0)
 			rrb(b);
@@ -65,7 +65,7 @@ int	sort_big(t_stack **a, t_stack **b)
 	t_context	*context;
 	int			res;
 
-	context = init_context(*a);
+	context = init_context();
 	if (!context)
 		return (0);
 	res = sort(a, b, &context, NULL);

@@ -6,12 +6,12 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/20 22:40:45 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/21 19:43:30 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGCS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 LIBS_PATH = ./libft/
 
 NAME = push_swap
@@ -43,7 +43,7 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME): $(OBJS) makelibft
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(CFLAGS) $(NAME)
+	 $(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(NAME)
 
 clean:
 	rm -f $(BIG_SRC)*.o $(MEDIUM_SRC)*.o $(SMALL_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o

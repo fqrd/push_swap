@@ -6,13 +6,13 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:55:23 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:12:07 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:41:46 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_context	*init_context(t_stack *a)
+t_context	*init_context(void)
 {
 	t_context	*context;
 
