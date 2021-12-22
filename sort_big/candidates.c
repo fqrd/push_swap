@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:22:32 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:10:41 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 21:15:58 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	clear_candidates(t_candidate **lst, int value)
 		free (*lst);
 		*lst = p;
 	}
+	*lst = NULL;
 	return (value);
 }
 

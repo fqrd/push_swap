@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 16:21:21 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:46:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 19:29:30 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,13 @@ int	parser(int argc, char *argv[], t_stack **a)
 		while (splits[i])
 		{
 			if (!valid_number(splits[i]))
-				return (free_splits(splits));
+				return (lst_clear(a, 1) && free_splits(splits));
 			else
+			{
 				*a = lst_new(a, ft_atoi(splits[i]));
+				if (!(*a))
+					return (0);
+			}
 			i++;
 		}
 		free_splits(splits);

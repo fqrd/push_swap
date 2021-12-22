@@ -6,15 +6,15 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:34:11 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 20:59:19 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	ft_puterror(char *err)
+static void	ft_puterror(char *err)
 {
-	return (write(2, err, ft_strlen(err)));
+	write(STDERR_FILENO, err, ft_strlen(err));
 }
 
 static void	set_indexes(t_stack **lst, int len)
@@ -64,7 +64,7 @@ static int	push_swap(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	if (!parser(argc, argv, &a))
-		return (lst_clear(&a, 0));
+		return (0);
 	if (!duplicates_check(a))
 		return (lst_clear(&a, 0));
 	set_indexes(&a, lst_size(a));

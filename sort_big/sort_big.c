@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:17:39 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/21 19:42:00 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 22:17:56 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,20 @@ static int	sort(t_stack **a, t_stack **b, t_context **context,
 	if ((*context)->sizea > 0)
 	{
 		c = find_candidates(a, context, c);
+		if (!c)
+			return (0);
 		find_destination(b, &c, context);
 		if ((*context)->sizeb > 1)
 		{
-			if (!navigate(a, b, &c))
-				return (clear_candidates(&c, 0));
-			sort(pb(a, b, 0), b, context, NULL);
+			if (!navigate(a, b, &c)
+				|| !sort(pb(a, b, 0), b, context, NULL))
+				return (0);
 		}
 		else
 		{
-			if (!navigate(a, b, &c))
-				return (clear_candidates(&c, 0));
-			sort(pb(a, b, 0), b, context, NULL);
+			if (!navigate(a, b, &c)
+				|| !sort(pb(a, b, 0), b, context, NULL))
+				return (0);
 		}
 	}
 	else

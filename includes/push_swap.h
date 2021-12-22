@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/21 19:41:55 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 19:12:56 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,4 @@ int			clear_candidates(t_candidate **lst, int value);
 t_route		*route_rewind(t_route *lst);
 t_route		*map_routes(t_candidate **c, t_route *route, int i, int j);
 void		clear_routes(t_route **route);
-int			ft_puterror(char *err);
 #endif

@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:41:54 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:50:38 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 21:12:10 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ static void	operations(t_route **route)
 		(*route)->operations += (*route)->rrr;
 }
 
-static t_route	*init_route(t_route *previous)
+static t_route	*init_route(t_route **previous)
 {
 	t_route	*route;
 
 	route = malloc(sizeof(t_route) * 1);
 	if (!route)
+	{
+		clear_routes(previous);
 		return (NULL);
+	}
 	route->operations = 0;
 	route->ra = -1;
 	route->rra = -1;
@@ -42,9 +45,9 @@ static t_route	*init_route(t_route *previous)
 	route->rrb = -1;
 	route->rr = -1;
 	route->rrr = -1;
-	route->previous = previous;
-	if (previous)
-		previous->next = route;
+	route->previous = *previous;
+	if (*previous)
+		(*previous)->next = route;
 	route->next = NULL;
 	return (route);
 }
@@ -94,20 +97,14 @@ static void	draw_routes(t_candidate **c,
 
 t_route	*map_routes(t_candidate **c, t_route *route, int i, int j)
 {
-	t_route	*p;
-
 	while (++i < 2)
 	{
 		j = -1;
 		while (++j < 2)
 		{
-			p = init_route(route);
-			if (!p)
-			{
-				clear_routes(&route);
+			route = init_route(&route);
+			if (!route)
 				return (NULL);
-			}
-			route = p;
 			draw_routes(c, &route, i, j);
 		}
 	}

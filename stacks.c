@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 15:37:24 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:27:39 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 20:56:56 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,16 @@ t_stack	*lst_new(t_stack **previous, int content)
 
 	list = malloc(sizeof(t_stack) * 1);
 	if (!list)
+	{
+		lst_clear(previous, 0);
 		return (NULL);
+	}
 	list->content = content;
 	list->next = NULL;
 	list->previous = *previous;
 	if (*previous)
 		(*previous)->next = list;
 	return (list);
-}
-
-t_stack	*lst_create(int argc, char *argv[])
-{
-	int		i;
-	t_stack	*current;
-	t_stack	*previous;
-
-	i = 0;
-	current = NULL;
-	previous = NULL;
-	while (++i < argc)
-	{
-		current = lst_new(&previous, ft_atoi(argv[i]));
-		if (previous)
-			previous->next = current;
-		previous = current;
-	}
-	previous->next = NULL;
-	return (lst_rewind(previous));
 }
 
 int	lst_clear(t_stack **lst, int val)

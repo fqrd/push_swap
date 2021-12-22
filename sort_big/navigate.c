@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 14:52:01 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 22:20:17 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/22 21:13:29 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	navigate(t_stack **a, t_stack **b, t_candidate **c)
 	{
 		route = map_routes(c, route, -1, -1);
 		if (!route)
-			return (0);
+			return (clear_candidates(c, 0));
 		if (!(*c)->next)
 			break ;
 		*c = (*c)->next;
