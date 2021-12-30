@@ -6,7 +6,7 @@
 #    By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 17:36:57 by fcaquard          #+#    #+#              #
-#    Updated: 2021/12/21 19:43:30 by fcaquard         ###   ########.fr        #
+#    Updated: 2021/12/30 13:06:01 by fcaquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ LIBS_PATH = ./libft/
 NAME = push_swap
 
 SMALL_SRC = ./sort_small/
-MEDIUM_SRC = ./sort_medium/
 BIG_SRC = ./sort_big/
 MANDATORY_SRC = ./moves/
 SRCS = \
@@ -29,8 +28,9 @@ SRCS = \
 	$(MANDATORY_SRC)rx.c			\
 	$(MANDATORY_SRC)rrx.c			\
 	$(MANDATORY_SRC)sx.c			\
-	$(SMALL_SRC)sort_small.c		\
-	$(MEDIUM_SRC)sort_medium.c		\
+	$(SMALL_SRC)sort_three.c		\
+	$(SMALL_SRC)sort_four.c			\
+	$(SMALL_SRC)sort_five.c			\
 	$(BIG_SRC)sort_big.c			\
 	$(BIG_SRC)context.c				\
 	$(BIG_SRC)candidates.c			\
@@ -46,7 +46,7 @@ $(NAME): $(OBJS) makelibft
 	 $(CC) $(CFLAGS) $(OBJS) -L$(LIBS_PATH) -lft -o $(NAME)
 
 clean:
-	rm -f $(BIG_SRC)*.o $(MEDIUM_SRC)*.o $(SMALL_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o
+	rm -f $(BIG_SRC)*.o $(SMALL_SRC)*.o $(MANDATORY_SRC)*.o $(LIBS_PATH)*.o ./*.o
 
 fclean: cleanlibft clean
 	rm ./$(NAME)

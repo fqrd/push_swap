@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:15 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/22 20:59:19 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/30 13:06:20 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ static void	set_indexes(t_stack **lst, int len)
 	*lst = lst_rewind(*lst);
 }
 
-static int	sort(size_t argc, t_stack **a, t_stack **b)
+static int	sort(size_t size, t_stack **a, t_stack **b)
 {
-	if (argc <= 3)
-		sort_small(a);
-	else if (argc == 5)
-		sort_medium(a, b);
+	if (size <= 3)
+		sort_three(a);
+	else if (size <= 4)
+		sort_four(a, b);
+	else if (size <= 5)
+		sort_five(a, b);
 	else
 		return (sort_big(a, b));
 	return (1);
@@ -61,8 +63,6 @@ static int	push_swap(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
-	if (argc < 2)
-		return (0);
 	if (!parser(argc, argv, &a))
 		return (0);
 	if (!duplicates_check(a))
@@ -70,7 +70,7 @@ static int	push_swap(int argc, char *argv[])
 	set_indexes(&a, lst_size(a));
 	if (lst_issorted(a, 0))
 		return (lst_clear(&a, 1));
-	if (!sort((size_t) argc - 1, &a, &b))
+	if (!sort(lst_size(a), &a, &b))
 		return (lst_clear(&a, 1) && lst_clear(&b, 0));
 	return (lst_clear(&a, 1) && lst_clear(&b, 1));
 }

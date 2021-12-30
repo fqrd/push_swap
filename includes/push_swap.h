@@ -6,7 +6,7 @@
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 17:37:20 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/22 19:12:56 by fcaquard         ###   ########.fr       */
+/*   Updated: 2021/12/30 13:03:26 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ t_context	*init_context(void);
 void		context_reset(t_stack **a, t_stack **b, t_context **context);
 int			navigate(t_stack **a, t_stack **b, t_candidate **c);
 int			get_position(t_stack **b, int index);
-int			sort_small(t_stack **a);
-int			sort_medium(t_stack **a, t_stack **b);
+int			sort_three(t_stack **a);
+int			sort_four(t_stack **a, t_stack **b);
+int			sort_five(t_stack **a, t_stack **b);
 int			sort_big(t_stack **a, t_stack **b);
 void		find_destination(t_stack **b, t_candidate **c, t_context **context);
 t_candidate	*find_candidates(t_stack **a, t_context **context, t_candidate *c);

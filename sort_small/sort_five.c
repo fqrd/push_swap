@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_medium.c                                      :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcaquard <fcaquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 13:22:42 by fcaquard          #+#    #+#             */
-/*   Updated: 2021/12/20 21:44:31 by fcaquard         ###   ########.fr       */
+/*   Created: 2021/12/30 12:55:23 by fcaquard          #+#    #+#             */
+/*   Updated: 2021/12/30 13:01:39 by fcaquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	sort(t_stack **x)
 	return (0);
 }
 
-int	sort_medium(t_stack **a, t_stack **b)
+int	sort_five(t_stack **a, t_stack **b)
 {
 	int	a_size;
 	int	sorted_a;
@@ -61,6 +61,6 @@ int	sort_medium(t_stack **a, t_stack **b)
 		sort(a);
 	if (!lst_issorted(*(pa(pa(a, b, 0), b, 0)), 0))
 		sa(a);
-	sort_medium(a, b);
+	sort_five(a, b);
 	return (0);
 }
